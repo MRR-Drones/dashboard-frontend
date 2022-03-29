@@ -16,7 +16,7 @@ System status:
 
 1. Install [NodeJS](https://nodejs.org/en) on your system
 2. Clone this repository
-3. Set up your `.env`
+3. Set up your `.env` and `.npmrc`
 4. Run:
 
 ```
