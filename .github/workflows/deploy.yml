@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Build app
+        run: |
+          npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+          npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FONT_AWESOME_PRO_TOKEN }}
+          npm install
+          npm run build
+
+      - name: Checkout build
+        run: find build/ -print
+
+      - name: Deploy app
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.MASTER_IP }}
+          username: ${{ secrets.MASTER_USER }}
+          password: ${{ secrets.MASTER_PASSWORD }}
+          server-dir: ${{ secrets.MASTER_REMOTE }}
+          local-dir: build/
