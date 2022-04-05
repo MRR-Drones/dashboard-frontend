@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^14.0.4",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
+    "framer-motion": "^6.2.8",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
     "react": "^18.0.0",
