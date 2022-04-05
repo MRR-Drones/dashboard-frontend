@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.placeholder {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: $black;
+  }
+}
