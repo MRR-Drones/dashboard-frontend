@@ -1,6 +1,9 @@
 // Colors
-$black: #000000;
-$white: #ffffff;
+$dark-gray: #333e48;
+$blue-gray: #90a6cb;
+$blue-gray-hover: #7087af;
+$light-gray: #edf0f3;
+$white: #fff;
 
 // Fonts
 $font: sans-serif;
@@ -28,9 +31,19 @@ $spacing-096: 96px;
 $spacing-128: 128px;
 
 // Radius
-$border-radius-full: 100px;
+$border-radius-3: 3px;
+$border-radius-6: 6px;
+$border-radius-10: 10px;
 
 // Effects
 $transition: all 0.2s ease-in-out;
 
+// App
+$box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.2);
+$box-shadow-min: 0px 5px 5px rgba(0, 0, 0, 0.1);
+$box-shadow-inset: 0 25px 10px -15px rgba(0, 0, 0, 0.1);
+$scale: scale(1.05);
+$scaleIcon: scale(1.15);
+
 // Mixin
+
