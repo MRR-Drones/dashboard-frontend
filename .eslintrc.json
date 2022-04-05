@@ -3,7 +3,6 @@
     "browser": true,
     "es2021": true
   },
-  "parser": "@babel/eslint-parser",
   "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,7 +12,7 @@
     "sourceType": "module",
     "requireConfigFile": false
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react"],
   "rules": {
     "prettier/prettier": [
       "error",
