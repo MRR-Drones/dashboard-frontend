@@ -12,8 +12,7 @@ export default function Home() {
         test
       </Button>
       <Button>test</Button>
-      <Input placeholder="test" />
-      <Input outline placeholder="test" />
+      <Input label="email" placeholder="test" />
       <Input white placeholder="test" />
     </div>
   );
