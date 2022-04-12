@@ -1,39 +1,44 @@
 @import 'src/styles/variables';
 
-.Input{
+.Input {
+  max-width: 100%;
+  overflow: hidden;
+
+  .label {
+    font-size: $font-small;
+  }
+
+  .input-wrapper {
+    position: relative;
     max-width: 100%;
     overflow: hidden;
-    .label{
-        font-size: $font-small;
-    }
-    .input-wrapper {
-        position: relative;
-        max-width: 100%;
-        overflow: hidden;
-        display: grid;
+    display: grid;
 
-        input {
-            margin: 0;
-            height: 40px;
-            background-color: $super-light-gray;
-            border: 1.5px solid $light-gray;
-            color: $black;
-            border-radius: $border-radius-5;
-            width: 200px;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 0 $spacing-008;
-            &::placeholder {
-                color: rgba($black, 0.4);
-            }
-            &.white {
-                border: 1.5px solid $light-gray;
-                background-color: white;
-                border-radius: $border-radius-5;
-            }
-            &.fullwidth{
-                width: 100%;
-            }
-        }
+    input {
+      margin: 0;
+      height: 40px;
+      background-color: $super-light-gray;
+      border: 1.5px solid $light-gray;
+      color: $black;
+      border-radius: $border-radius-5;
+      width: 200px;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0 $spacing-008;
+
+      &::placeholder {
+        color: rgba($black, 0.4);
+      }
+
+      &.white {
+        border: 1.5px solid $light-gray;
+        background-color: white;
+        border-radius: $border-radius-5;
+      }
+
+      &.fullwidth {
+        width: 100%;
+      }
     }
+  }
 }
