@@ -3,10 +3,10 @@ import './shared.scss';
 
 import Placeholder from '../components/Placeholder/Placeholder';
 
-const Home = () => (
-  <div className="page home">
-    <Placeholder />
-  </div>
-);
-
-export default Home;
+export default function Home() {
+  return (
+    <div className="page home">
+      <Placeholder />
+    </div>
+  );
+}
