@@ -1,8 +1,7 @@
 import React from 'react';
 import './Input.scss';
 
-export default function Input(props) {
-  const { handleChange, value, placeholder, outline, white, fullwidth } = props;
+export default function Input({ handleChange, value, placeholder, outline, white, fullwidth }) {
   return (
     <div className="input-wrapper">
       <input

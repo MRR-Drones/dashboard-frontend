@@ -2,8 +2,7 @@ import React from 'react';
 import './Button.scss';
 import { motion } from 'framer-motion';
 
-export default function Button(props) {
-  const { children, onclick } = props;
+export default function Button({ children, onclick }) {
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
