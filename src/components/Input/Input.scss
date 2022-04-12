@@ -1,0 +1,35 @@
+@import 'src/styles/variables';
+
+.input-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    display: grid;
+
+    .input {
+        margin: 0;
+        height: 40px;
+        background-color: $light-gray;
+        border: none;
+        color: $black;
+        border-radius: $border-radius-5;
+        width: 200px;
+        max-width: 100%;
+        padding: 0 $spacing-008;
+        &::placeholder {
+            color: rgba($black, 0.4);
+        }
+        &.white {
+            background-color: white;
+        }
+        &.outline {
+            border: 1px solid $light-gray;
+            background-color: white;
+            border-radius: $border-radius-5;
+        }
+        &.fullwidth{
+            width: 100%;
+        }
+    }
+
+}

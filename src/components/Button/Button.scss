@@ -4,12 +4,13 @@
     background-color: $blue;
     border: none;
     color: white;
-    padding: 8px 12px;
+    padding: $spacing-004 $spacing-024;
     border-radius: $border-radius-5;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
+    width: fit-content;
     cursor: pointer;
     &.fullwidth{
         width: 100%;
