@@ -1,7 +1,8 @@
 @import 'src/styles/variables';
 
 .Input{
-
+    max-width: 100%;
+    overflow: hidden;
     .label{
         font-size: $font-small;
     }
@@ -20,6 +21,7 @@
             border-radius: $border-radius-5;
             width: 200px;
             max-width: 100%;
+            overflow: hidden;
             padding: 0 $spacing-008;
             &::placeholder {
                 color: rgba($black, 0.4);
