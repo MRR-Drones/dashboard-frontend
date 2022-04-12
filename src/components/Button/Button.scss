@@ -1,0 +1,14 @@
+@import 'src/styles/variables';
+
+.button {
+    background-color: $blue;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: $border-radius-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
