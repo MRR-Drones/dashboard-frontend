@@ -11,4 +11,10 @@
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    &.fullwidth{
+        width: 100%;
+    }
+    &.red{
+        background-color: $red;
+    }
 }

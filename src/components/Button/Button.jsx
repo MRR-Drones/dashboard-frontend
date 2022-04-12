@@ -11,7 +11,7 @@ export default function Button(props) {
       onClick={() => {
         props.onClick();
       }}
-      className={`button `}
+      className={`button ${props.fullwidth ? 'fullwidth' : ''} ${props.red ? 'red' : ''}`}
     >
       {props.children}
     </motion.button>
