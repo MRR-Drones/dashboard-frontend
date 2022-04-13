@@ -32,11 +32,11 @@ jobs:
 
   prettier:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-        
+
       - uses: actions/cache@v2
         name: Configure npm caching
         with:
@@ -44,9 +44,8 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/workflows/ci.yml') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-            
+
       - name: Run Prettier
         uses: creyD/prettier_action@v4.2
         with:
           prettier_options: --check .
-          
