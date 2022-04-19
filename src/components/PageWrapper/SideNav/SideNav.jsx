@@ -8,6 +8,7 @@ import { faChartTreeMap, faCog, faMap } from '@fortawesome/pro-regular-svg-icons
 
 // Import components
 import NavItem from './NavItem/NavItem';
+import Clock from './Clock/Clock';
 
 export default function SideNav() {
   const location = useLocation();
@@ -39,7 +40,7 @@ export default function SideNav() {
         </NavItem>
       </div>
       <div className="bottom">
-        <p>Bottom</p>
+        <Clock />
       </div>
     </div>
   );
