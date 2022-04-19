@@ -9,10 +9,16 @@
   left: 0;
   top: 0;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: $spacing-008 0;
+  grid-template-rows: 1fr auto 1fr;
+  padding: $spacing-016 0;
 
   .top {
+    display: grid;
+    justify-content: center;
+    svg{
+      color: $blue;
+      font-size: 26px;
+    }
   }
 
   .middle {
@@ -25,5 +31,11 @@
   }
 
   .bottom {
+    display: grid;
+    justify-content: center;
+    gap: $spacing-012;
+    height: fit-content;
+    align-self: end;
+
   }
 }

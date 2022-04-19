@@ -5,10 +5,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartTreeMap, faCog, faMap } from '@fortawesome/pro-regular-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 // Import components
 import NavItem from './NavItem/NavItem';
 import Clock from './Clock/Clock';
+import NotificationsBell from './NotificationsBell/NotificationsBell';
+import Wheater from './Wheater/Wheater';
 
 export default function SideNav() {
   const location = useLocation();
@@ -26,7 +29,7 @@ export default function SideNav() {
         tabIndex={0}
         aria-hidden="true"
       >
-        <p>Top</p>
+        <FontAwesomeIcon icon={faStar} />
       </div>
       <div className="middle">
         <NavItem link="/" pathName={pathName}>
@@ -40,7 +43,9 @@ export default function SideNav() {
         </NavItem>
       </div>
       <div className="bottom">
+        <Wheater />
         <Clock />
+        <NotificationsBell />
       </div>
     </div>
   );
