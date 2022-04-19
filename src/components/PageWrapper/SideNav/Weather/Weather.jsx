@@ -1,13 +1,13 @@
 import React from 'react';
-import './Wheater.scss';
+import './Weather.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudSun } from '@fortawesome/pro-regular-svg-icons';
 
-export default function Wheater() {
+export default function Weather() {
   return (
-    <div className="Wheater">
+    <div className="Weather">
       <FontAwesomeIcon icon={faCloudSun} />
     </div>
   );

@@ -15,7 +15,7 @@
   .top {
     display: grid;
     justify-content: center;
-    svg{
+    svg {
       color: $blue;
       font-size: 26px;
     }
@@ -36,6 +36,5 @@
     gap: $spacing-012;
     height: fit-content;
     align-self: end;
-
   }
 }

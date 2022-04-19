@@ -16,7 +16,7 @@ import {
 import NavItem from './NavItem/NavItem';
 import Clock from './Clock/Clock';
 import NotificationsBell from './NotificationsBell/NotificationsBell';
-import Wheater from './Wheater/Wheater';
+import Weather from './Weather/Weather';
 
 export default function SideNav() {
   const location = useLocation();
@@ -52,7 +52,7 @@ export default function SideNav() {
         </NavItem>
       </div>
       <div className="bottom">
-        <Wheater />
+        <Weather />
         <Clock />
         <NotificationsBell />
       </div>
