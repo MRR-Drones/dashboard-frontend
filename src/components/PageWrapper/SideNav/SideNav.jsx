@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartTreeMap } from '@fortawesome/pro-regular-svg-icons';
+import { faChartTreeMap, faCog, faMap } from '@fortawesome/pro-regular-svg-icons';
 
 // Import components
 import NavItem from './NavItem/NavItem';
@@ -24,8 +24,14 @@ export default function SideNav() {
         <p>Top</p>
       </div>
       <div className="middle">
-        <NavItem link="/overview" pathName={pathName}>
+        <NavItem link="/" pathName={pathName}>
           <FontAwesomeIcon icon={faChartTreeMap} />
+        </NavItem>
+        <NavItem link="/overview" pathName={pathName}>
+          <FontAwesomeIcon icon={faMap} />
+        </NavItem>
+        <NavItem link="/settings" pathName={pathName}>
+          <FontAwesomeIcon icon={faCog} />
         </NavItem>
       </div>
       <div className="bottom">
