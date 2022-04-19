@@ -9,10 +9,12 @@
   padding-left: 2px;
   border-right: 5px solid transparent;
   cursor: pointer;
+
   svg {
     color: #9a9a9a;
     font-size: 22px;
   }
+
   &.active {
     background-color: $light-gray;
     border-right: 5px solid $blue;

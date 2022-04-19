@@ -11,21 +11,22 @@ $green: #67d7a3;
 $yellow: #ffc107;
 
 // Fonts
-$font: sans-serif;
-$font-h1: 40px;
-$font-h2: 28px;
-$font-h3: 22px;
+$font: 'Avenir Next', sans-serif;
+$font-h1: 53px;
+$font-h2: 34px;
+$font-h3: 28px;
 $font-h4: 18px;
 $font-large: 18px;
 $font-normal: 14px;
 $font-small: 12px;
 
 // Font weights
-$font-weight-thin: 199;
+$font-weight-ultralight: 200;
 $font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-demibold: 600;
 $font-weight-bold: 700;
-$font-weight-extrabold: 800;
-$font-weight-black: 900;
+$font-weight-heavy: 900;
 
 // Spacing
 $spacing-004: 4px;
@@ -46,7 +47,5 @@ $border-radius-10: 10px;
 // Effects
 $transition: all 0.2s ease-in-out;
 $scale: scale(1.05);
-
-// App
 
 // Mixin

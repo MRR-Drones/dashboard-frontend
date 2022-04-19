@@ -11,8 +11,10 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   padding: $spacing-008 0;
+
   .top {
   }
+
   .middle {
     display: flex;
     justify-content: center;
@@ -21,6 +23,7 @@
     gap: $spacing-004;
     width: 100%;
   }
+
   .bottom {
   }
 }

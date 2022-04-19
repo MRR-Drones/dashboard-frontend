@@ -1,5 +1,137 @@
 @import './variables';
 
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-Bold.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-Bold.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-Bold.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-Bold.svg#AvenirNext-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-BoldItalic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-BoldItalic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-BoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-BoldItalic.svg#AvenirNext-BoldItalic') format('svg');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-DemiBold.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-DemiBold.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-DemiBold.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-DemiBold.svg#AvenirNext-DemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-Heavy.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-Heavy.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-Heavy.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-Heavy.svg#AvenirNext-Heavy') format('svg');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-DemiBoldItalic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-DemiBoldItalic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-DemiBoldItalic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-DemiBoldItalic.svg#AvenirNext-DemiBoldItalic') format('svg');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-Medium.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-Medium.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-Medium.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-Medium.svg#AvenirNext-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-HeavyItalic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-HeavyItalic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-HeavyItalic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-HeavyItalic.svg#AvenirNext-HeavyItalic') format('svg');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-Italic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-Italic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-Italic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-Italic.svg#AvenirNext-Italic') format('svg');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-Regular.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-Regular.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-Regular.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-Regular.svg#AvenirNext-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-UltraLightItalic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-UltraLightItalic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-UltraLightItalic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-UltraLightItalic.svg#AvenirNext-UltraLightItalic') format('svg');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-MediumItalic.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-MediumItalic.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-MediumItalic.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-MediumItalic.svg#AvenirNext-MediumItalic') format('svg');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../assets/fonts/AvenirNext-UltraLight.woff2') format('woff2'),
+    url('../assets/fonts/AvenirNext-UltraLight.woff') format('woff'),
+    url('../assets/fonts/AvenirNext-UltraLight.ttf') format('truetype'),
+    url('../assets/fonts/AvenirNext-UltraLight.svg#AvenirNext-UltraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: $font;
   color: var(--text-color);
