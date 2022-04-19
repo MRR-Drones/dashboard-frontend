@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 2px;
+  padding-left: 1.5px;
   border-right: 5px solid transparent;
   cursor: pointer;
 
@@ -17,6 +17,9 @@
 
   &.active {
     background-color: $light-gray;
-    border-right: 5px solid $blue;
+    border-right: 4px solid $blue;
+    svg{
+        color: $blue;
+    }
   }
 }
