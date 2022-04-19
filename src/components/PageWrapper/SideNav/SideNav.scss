@@ -10,6 +10,7 @@
   top: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  padding: $spacing-008 0;
   .top {
   }
   .middle {
