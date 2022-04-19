@@ -4,16 +4,17 @@ import './Home.scss';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import PageWrapper from '../../components/PageWrapper/PageWrapper';
 
 export default function Home() {
   return (
-    <div className="page home">
+    <PageWrapper>
       <Button red fullwidth>
         test
       </Button>
       <Button>test</Button>
       <Input label="email" placeholder="test" />
       <Input white placeholder="test" />
-    </div>
+    </PageWrapper>
   );
 }
