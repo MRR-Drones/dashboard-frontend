@@ -1,17 +1,17 @@
 @import 'src/styles/variables';
 
-.NavItem{
-    width: 100%;
-    height: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    svg{
-        color: #9A9A9A;
-        font-size: 22px;
-    }
-    &.active{
-        background-color: $light-gray;
-        border-right: 5px solid $blue;
-    }
+.NavItem {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    color: #9a9a9a;
+    font-size: 22px;
+  }
+  &.active {
+    background-color: $light-gray;
+    border-right: 5px solid $blue;
+  }
 }

@@ -1,26 +1,24 @@
 @import 'src/styles/variables';
 
-.SideNav{
-    position: fixed;
-    height: 100vh;
-    background-color: $white;
-    border: 2px solid $light-gray;
-    width: 60px;
-    left: 0;
-    top: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    .top{
-
-    }
-    .middle{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-    }
-    .bottom{
-
-    }
+.SideNav {
+  position: fixed;
+  height: 100vh;
+  background-color: $white;
+  border: 2px solid $light-gray;
+  width: 60px;
+  left: 0;
+  top: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  .top {
+  }
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  .bottom {
+  }
 }
