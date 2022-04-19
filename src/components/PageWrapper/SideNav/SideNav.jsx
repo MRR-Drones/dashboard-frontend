@@ -13,6 +13,7 @@ export default function SideNav() {
   const location = useLocation();
   const pathName = location.pathname;
   const navigate = useNavigate();
+
   return (
     <div className="SideNav">
       <div
@@ -20,6 +21,9 @@ export default function SideNav() {
           navigate('/');
         }}
         className="top"
+        role="button"
+        tabIndex={0}
+        aria-hidden="true"
       >
         <p>Top</p>
       </div>
