@@ -1,4 +1,10 @@
 @import 'src/styles/variables';
 
-.Map {
+.map {
+    height: 600px;
+    width: auto;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+    display: none;
 }

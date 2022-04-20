@@ -5,9 +5,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/pro-light-svg-icons": "^6.1.1",
     "@fortawesome/pro-regular-svg-icons": "^6.1.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.0.0",
@@ -16,6 +16,7 @@
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "framer-motion": "^6.2.8",
+    "mapbox-gl": "^2.8.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
     "react": "^18.0.0",
