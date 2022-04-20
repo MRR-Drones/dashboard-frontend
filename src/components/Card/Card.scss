@@ -2,7 +2,7 @@
 
 .Card{
     background-color: $white;
-    padding: $spacing-024;
+    padding: 20px;
     border-radius: $border-radius-10;
     border: 1px solid $light-gray;
     max-width: 100%;
@@ -57,6 +57,9 @@
         .icon-text{
             display: grid;
             gap: $spacing-008;
+            p{
+                font-size: $font-small;
+            }
         }
     }
 }

@@ -21,12 +21,12 @@ export default function Card({ number, status, small, battery, speed, altitude, 
       {!small && (
         <div className="bottom">
           <div className="icon-text">
-            <FontAwesomeIcon icon={faBatteryHalf} />
-            <p>{battery} %</p>
-          </div>
-          <div className="icon-text">
             <FontAwesomeIcon icon={faArrowsUpDown} />
             <p>{altitude} m</p>
+          </div>
+          <div className="icon-text">
+            <FontAwesomeIcon icon={faBatteryHalf} />
+            <p>{battery} %</p>
           </div>
           <div className="icon-text">
             <FontAwesomeIcon icon={faClockRotateLeft} />
