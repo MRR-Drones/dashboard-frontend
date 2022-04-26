@@ -8,7 +8,6 @@ import Route from '../../core/Route';
 
 export default function App() {
   return (
-    // <BrowserRouter>
     <div className="app">
       <Route path="/">
         <Home />
@@ -17,6 +16,5 @@ export default function App() {
         <Overview />
       </Route>
     </div>
-    // </BrowserRouter>
   );
 }

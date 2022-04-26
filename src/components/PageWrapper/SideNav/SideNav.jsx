@@ -1,6 +1,5 @@
 import React from 'react';
 import './SideNav.scss';
-// import { useLocation, useNavigate } from 'react-router-dom';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,10 +18,6 @@ import NotificationsBell from './NotificationsBell/NotificationsBell';
 import Weather from './Weather/Weather';
 
 export default function SideNav({ path }) {
-  // const location = useLocation();
-  // const pathName = location.pathname;
-  // const navigate = useNavigate();
-
   return (
     <div className="SideNav">
       <div
