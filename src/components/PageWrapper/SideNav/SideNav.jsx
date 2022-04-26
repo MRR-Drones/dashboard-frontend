@@ -18,7 +18,7 @@ import Clock from './Clock/Clock';
 import NotificationsBell from './NotificationsBell/NotificationsBell';
 import Weather from './Weather/Weather';
 
-export default function SideNav() {
+export default function SideNav({ path }) {
   // const location = useLocation();
   // const pathName = location.pathname;
   // const navigate = useNavigate();
@@ -37,18 +37,14 @@ export default function SideNav() {
         <FontAwesomeIcon icon={faStar} />
       </div>
       <div className="middle">
-        <NavItem link="/" pathName={pathName}>
-          {pathName === '/' ? (
-            <FontAwesomeIcon icon={faChartTreeMapSolid} />
-          ) : (
-            <FontAwesomeIcon icon={faChartTreeMap} />
-          )}
+        <NavItem link="/" path={path}>
+          {path === '/' ? <FontAwesomeIcon icon={faChartTreeMapSolid} /> : <FontAwesomeIcon icon={faChartTreeMap} />}
         </NavItem>
-        <NavItem link="/overview" pathName={pathName}>
-          {pathName === '/overview' ? <FontAwesomeIcon icon={faMapSolid} /> : <FontAwesomeIcon icon={faMap} />}
+        <NavItem link="/overview" path={path}>
+          {path === '/overview' ? <FontAwesomeIcon icon={faMapSolid} /> : <FontAwesomeIcon icon={faMap} />}
         </NavItem>
-        <NavItem link="/settings" pathName={pathName}>
-          {pathName === '/settings' ? <FontAwesomeIcon icon={faCogSolid} /> : <FontAwesomeIcon icon={faCog} />}
+        <NavItem link="/settings" path={path}>
+          {path === '/settings' ? <FontAwesomeIcon icon={faCogSolid} /> : <FontAwesomeIcon icon={faCog} />}
         </NavItem>
       </div>
       <div className="bottom">

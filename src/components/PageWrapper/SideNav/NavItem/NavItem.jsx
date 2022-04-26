@@ -1,21 +1,13 @@
 import React from 'react';
 import './NavItem.scss';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-export default function NavItem({ children, pathName, link }) {
-  const navigate = useNavigate();
+export default function NavItem({ children, path, link }) {
+  // const navigate = useNavigate();
 
   return (
-    <div
-      onClick={() => {
-        navigate(link);
-      }}
-      className={`NavItem ${pathName === link ? 'active' : ''}`}
-      role="button"
-      tabIndex={0}
-      aria-hidden="true"
-    >
+    <a href={link} className={`NavItem ${path === link ? 'active' : ''}`}>
       {children}
-    </div>
+    </a>
   );
 }
