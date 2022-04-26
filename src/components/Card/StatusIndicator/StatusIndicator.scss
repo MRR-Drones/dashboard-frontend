@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+
+.StatusIndicator {
+  display: flex;
+  align-items: center;
+  gap: $spacing-008;
+  padding-left: $spacing-008;
+  .indicator {
+    height: 5px;
+    width: 5px;
+    border-radius: 999px;
+    background: rgba($black, 0.3);
+    outline: 4px solid $light-gray;
+    display: flex;
+    &.active,
+    &.online {
+      background: $green;
+      outline: 4px solid rgba($green, 0.4);
+    }
+    &.offline {
+      background: $red;
+      outline: 4px solid rgba($red, 0.4);
+    }
+  }
+  p {
+    color: $black;
+    opacity: 0.3;
+    font-weight: $font-weight-demibold;
+    text-transform: capitalize;
+  }
+}
