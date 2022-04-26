@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 import Home from '../../pages/Home/Home';
 import Overview from '../../pages/Overview/Overview';
