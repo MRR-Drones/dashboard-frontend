@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.cards-grid{
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: $spacing-016;
@@ -18,7 +18,7 @@
     grid-template-columns: 1fr;
   }
 }
-.cards-grid-small{
+.cards-grid-small {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: $spacing-016;

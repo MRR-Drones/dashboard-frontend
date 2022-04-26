@@ -1,65 +1,66 @@
 @import 'src/styles/variables';
 
-.Card{
-    background-color: $white;
-    padding: 20px;
-    border-radius: $border-radius-10;
-    border: 1px solid $light-gray;
-    max-width: 100%;
+.Card {
+  background-color: $white;
+  padding: 20px;
+  border-radius: $border-radius-10;
+  border: 1px solid $light-gray;
+  max-width: 100%;
+  display: grid;
+  gap: $spacing-024;
+  .top {
     display: grid;
-    gap: $spacing-024;
-    .top{
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: center;
-        column-gap: $spacing-012;
-        position: relative;
-        .border-left{
-            width: 3px;
-            height: 100%;
-            background-color: rgba($black, 0.15);
-            margin-left: -20px;
-            border-top-right-radius: 999px;
-            border-bottom-right-radius: 999px;
-            position: absolute;
-            left: 0;
-            &.active, &.online{
-                background: $green;
-            }
-            &.offline{
-                background: $red;
-            }
-        }
-        .name{
-            font-weight: $font-weight-demibold;
-            font-size: $font-large;
-        }
-        .icon{
-            background-color: $black;
-            color: $white;
-            height: 15px;
-            width: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 999px;
-            font-size: $font-small;
-            font-weight: $font-weight-demibold;
-        }
-        .route{
-            grid-column: 1 / -1;
-        }
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: $spacing-012;
+    position: relative;
+    .border-left {
+      width: 3px;
+      height: 100%;
+      background-color: rgba($black, 0.15);
+      margin-left: -20px;
+      border-top-right-radius: 999px;
+      border-bottom-right-radius: 999px;
+      position: absolute;
+      left: 0;
+      &.active,
+      &.online {
+        background: $green;
+      }
+      &.offline {
+        background: $red;
+      }
     }
-    .bottom{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-        gap: $spacing-012;
-        .icon-text{
-            display: grid;
-            gap: $spacing-008;
-            p{
-                font-size: $font-small;
-            }
-        }
+    .name {
+      font-weight: $font-weight-demibold;
+      font-size: $font-large;
     }
+    .icon {
+      background-color: $black;
+      color: $white;
+      height: 15px;
+      width: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      font-size: $font-small;
+      font-weight: $font-weight-demibold;
+    }
+    .route {
+      grid-column: 1 / -1;
+    }
+  }
+  .bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: $spacing-012;
+    .icon-text {
+      display: grid;
+      gap: $spacing-008;
+      p {
+        font-size: $font-small;
+      }
+    }
+  }
 }
