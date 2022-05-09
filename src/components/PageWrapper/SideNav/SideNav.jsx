@@ -3,13 +3,7 @@ import './SideNav.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartTreeMap, faCog, faMap } from '@fortawesome/pro-regular-svg-icons';
-import {
-  faStar,
-  faChartTreeMap as faChartTreeMapSolid,
-  faMap as faMapSolid,
-  faCog as faCogSolid,
-} from '@fortawesome/pro-solid-svg-icons';
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
 import NavItem from './NavItem/NavItem';
@@ -20,26 +14,22 @@ import Weather from './Weather/Weather';
 export default function SideNav({ path }) {
   return (
     <div className="SideNav">
-      <div
-        className="top"
-        // onClick={() => {
-        //   navigate('/');
-        // }}
-        // role="button"
-        // tabIndex={0}
-        // aria-hidden="true"
-      >
-        <FontAwesomeIcon icon={faStar} />
+      <div className="top">
+        <FontAwesomeIcon icon={solid('star')} />
       </div>
       <div className="middle">
         <NavItem link="/" path={path}>
-          {path === '/' ? <FontAwesomeIcon icon={faChartTreeMapSolid} /> : <FontAwesomeIcon icon={faChartTreeMap} />}
+          {path === '/' ? (
+            <FontAwesomeIcon icon={solid('chart-tree-map')} />
+          ) : (
+            <FontAwesomeIcon icon={regular('chart-tree-map')} />
+          )}
         </NavItem>
         <NavItem link="/overview" path={path}>
-          {path === '/overview' ? <FontAwesomeIcon icon={faMapSolid} /> : <FontAwesomeIcon icon={faMap} />}
+          {path === '/overview' ? <FontAwesomeIcon icon={solid('map')} /> : <FontAwesomeIcon icon={regular('map')} />}
         </NavItem>
         <NavItem link="/settings" path={path}>
-          {path === '/settings' ? <FontAwesomeIcon icon={faCogSolid} /> : <FontAwesomeIcon icon={faCog} />}
+          {path === '/settings' ? <FontAwesomeIcon icon={solid('cog')} /> : <FontAwesomeIcon icon={regular('cog')} />}
         </NavItem>
       </div>
       <div className="bottom">

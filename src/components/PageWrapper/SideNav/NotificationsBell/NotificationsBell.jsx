@@ -3,12 +3,12 @@ import './NotificationsBell.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/pro-regular-svg-icons';
+import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 export default function NotificationsBell() {
   return (
     <div className="NotificationsBell">
-      <FontAwesomeIcon icon={faBell} />
+      <FontAwesomeIcon icon={regular('bell')} />
     </div>
   );
 }

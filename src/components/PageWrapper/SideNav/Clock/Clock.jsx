@@ -7,7 +7,6 @@ import 'moment-timezone';
 export default function Clock() {
   Moment.globalLocale = 'nl';
   const today = Date();
-  // const date = 'DD MMM YYYY';
   const time = 'HH:mm';
   const currentTime = useState(Date.now());
 
@@ -21,8 +20,6 @@ export default function Clock() {
   return (
     <div className="Clock">
       <h3>
-        {/* <Moment interval={1000} date={today} format={date} /> */}
-        {/* <br /> */}
         <Moment interval={1000} date={today} format={time} />
       </h3>
     </div>

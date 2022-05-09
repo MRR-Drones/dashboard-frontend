@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Map.scss';
 // import * as turf from '@turf/turf';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
 function Map() {
   const mapContainerRef = useRef(null);
 

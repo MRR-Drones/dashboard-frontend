@@ -3,7 +3,7 @@ import './Card.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBatteryHalf, faTimer, faArrowsUpDown, faClockRotateLeft } from '@fortawesome/pro-solid-svg-icons';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
 import StatusIndicator from './StatusIndicator/StatusIndicator';
@@ -21,19 +21,19 @@ export default function Card({ number, status, small, battery, speed, altitude, 
       {!small && (
         <div className="bottom">
           <div className="icon-text">
-            <FontAwesomeIcon icon={faArrowsUpDown} />
+            <FontAwesomeIcon icon={solid('arrows-up-down')} />
             <p>{altitude} m</p>
           </div>
           <div className="icon-text">
-            <FontAwesomeIcon icon={faBatteryHalf} />
+            <FontAwesomeIcon icon={solid('battery-half')} />
             <p>{battery} %</p>
           </div>
           <div className="icon-text">
-            <FontAwesomeIcon icon={faClockRotateLeft} />
+            <FontAwesomeIcon icon={solid('clock-rotate-left')} />
             <p>{timeTravelled} min</p>
           </div>
           <div className="icon-text">
-            <FontAwesomeIcon icon={faTimer} />
+            <FontAwesomeIcon icon={solid('timer')} />
             <p>{speed} km/h</p>
           </div>
         </div>
