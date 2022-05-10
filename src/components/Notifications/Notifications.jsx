@@ -7,9 +7,9 @@ import Notification from './Notification/Notification';
 export default function Notifications() {
   return (
     <div className="Notifications">
-      <Notification />
-      <Notification />
-      <Notification />
+      <Notification messageType="check" />
+      <Notification messageType="error" />
+      <Notification messageType="warning" />
     </div>
   );
 }
