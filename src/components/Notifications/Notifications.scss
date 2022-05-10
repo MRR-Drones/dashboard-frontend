@@ -1,5 +1,8 @@
 @import 'src/styles/variables';
 .Notifications {
-  display: grid;
-  gap: $spacing-004;
+    display: grid;
+    gap: $spacing-012;
+    h2 {
+        margin-bottom: $spacing-012;
+    }
 }

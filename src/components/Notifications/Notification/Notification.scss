@@ -1,20 +1,30 @@
 @import 'src/styles/variables';
 .Notification {
-    width: fit-content;
+    width: 100%;
     padding: $spacing-016;
     background-color: $super-light-gray;
     .heading {
         display: flex;
         flex-direction: row;
+        align-items: center;
         column-gap: $spacing-012;
+        .iconCheck {
+            color: $green;
+        }
+        .iconWarning {
+            color: $red;
+        }
+        .iconError {
+            color: $yellow;
+        }
     }
-    .iconCheck {
-        color: $green;
-    }
-    .iconWarning {
-        color: $red;
-    }
-    .iconError {
-        color: $yellow;
+    .message {
+        max-height: 200px;
+        max-width: 100%;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
     }
 }
