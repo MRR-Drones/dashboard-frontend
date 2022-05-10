@@ -12,9 +12,9 @@ export default function Map() {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-      center: [-96, 37.8],
-      zoom: 3,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [5.4697225, 51.441642],
+      zoom: 12,
     });
 
     // -- Eindhoven --
@@ -22,11 +22,11 @@ export default function Map() {
     // center: [5.4697225, 51.441642],
     // zoom: 12,
 
-    // San Francisco
-    const origin = [-122.414, 37.776];
-
-    // Washington DC
-    const destination = [-77.032, 38.913];
+    const one = [5.444334, 51.44042];
+    const two = [5.472818, 51.444058];
+    const three = [5.509539, 51.442132];
+    const four = [5.479339, 51.422012];
+    const five = [5.444334, 51.44042];
 
     // A simple line from origin to destination.
     const route = {
@@ -36,7 +36,7 @@ export default function Map() {
           type: 'Feature',
           geometry: {
             type: 'LineString',
-            coordinates: [origin, destination],
+            coordinates: [one, two, three, four, five],
           },
         },
       ],
