@@ -7,19 +7,26 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
 
-export default function Notification({ messageType }) {
+export default function Notification({ messageType, messageTitle, message }) {
   return (
     <div className="Notification">
-      <div className="heading">
-        {messageType === 'check' && <FontAwesomeIcon className="iconCheck" icon={solid('check-circle')} />}
-        {messageType === 'warning' && <FontAwesomeIcon className="iconWarning" icon={solid('circle-exclamation')} />}
-        {messageType === 'error' && <FontAwesomeIcon className="iconError" icon={solid('times-circle')} />}
-        <h4 className="messageTitle">Notification message</h4>
+      <div>
+        <div className="heading">
+          {messageType === 'check' && <FontAwesomeIcon className="iconCheck" icon={solid('check-circle')} />}
+          {messageType === 'warning' && <FontAwesomeIcon className="iconWarning" icon={solid('circle-exclamation')} />}
+          {messageType === 'error' && <FontAwesomeIcon className="iconError" icon={solid('times-circle')} />}
+          <h4 className="messageTitle">Notification message{messageTitle}</h4>
+        </div>
+        <p className="message">This is the notification message{message}</p>
       </div>
-      <p className="message">
-        This is the notification message kjaskajhsdkjhasdkhasjkdaskdhjas sdjsjdhjs jahsajhs ajshakshkjahskskshjahskjahs
-        kjahsjkahsajhsjkahskja kahsjkahs
-      </p>
+      <FontAwesomeIcon
+        onClick={() => {
+          console.log('geklikt');
+        }}
+        aria-hidden="true"
+        className="iconError"
+        icon={solid('times')}
+      />
     </div>
   );
 }
