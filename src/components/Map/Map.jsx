@@ -16,8 +16,6 @@ function Map() {
       zoom: 12,
     });
 
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-
     return () => map.remove();
   }, []);
 
