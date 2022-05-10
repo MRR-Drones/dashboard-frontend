@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div className="app">
       <Router>
-        <SideNav />
+        {window.location.pathname !== '/login' && <SideNav />}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/overview" element={<Overview />} />
