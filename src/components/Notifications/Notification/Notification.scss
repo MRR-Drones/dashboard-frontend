@@ -4,12 +4,12 @@
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding: $spacing-016;
+    padding: $spacing-016 0;
     border-bottom: 1px solid $light-gray;
     &.first-child {
         border-top: 1px solid $light-gray;
     }
-    .heading {
+    .title {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -36,8 +36,10 @@
     }
     .iconClose {
         align-self: center;
-        font-size: $font-h4;
         cursor: pointer;
         opacity: 50%;
+        svg {
+            font-size: $font-h4;
+        }
     }
 }
