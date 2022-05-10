@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Map.scss';
 import * as turf from '@turf/turf';
-// import './mapbox-gl.css';
 
 // Import FontAwesome
 // import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
