@@ -13,5 +13,8 @@
     padding: $spacing-032;
     max-width: 100%;
     overflow: hidden;
+    &.fullscreen {
+      padding: 0;
+    }
   }
 }
