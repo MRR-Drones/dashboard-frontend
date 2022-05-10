@@ -1,20 +1,20 @@
 @import 'src/styles/variables';
 .Notification {
-    width: fit-content;
-    padding: $spacing-016;
-    background-color: $super-light-gray;
-    .heading {
-        display: flex;
-        flex-direction: row;
-        column-gap: $spacing-012;
-    }
-    .iconCheck {
-        color: $green;
-    }
-    .iconWarning {
-        color: $red;
-    }
-    .iconError {
-        color: $yellow;
-    }
+  width: fit-content;
+  padding: $spacing-016;
+  background-color: $super-light-gray;
+  .heading {
+    display: flex;
+    flex-direction: row;
+    column-gap: $spacing-012;
+  }
+  .iconCheck {
+    color: $green;
+  }
+  .iconWarning {
+    color: $red;
+  }
+  .iconError {
+    color: $yellow;
+  }
 }
