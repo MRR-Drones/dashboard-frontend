@@ -7,7 +7,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 
 // Import images
-import homeMockup from '../../assets/images/drone-home-mackbook.png';
+import homeMockup from '../../assets/images/drone-home-macbook.png';
 
 export default function Login() {
   return (
