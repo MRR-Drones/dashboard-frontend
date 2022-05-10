@@ -1,20 +1,27 @@
 @import 'src/styles/variables';
 
 .map-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  height: 100%;
   width: 100%;
+}
+
+.mapboxgl-canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .mapboxgl-ctrl-attrib-inner {
   display: none;
 }
 
+.mapboxgl-control-container {
+  display: none;
+}
+
 .overlay {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 100px;
+  left: 150px;
 }
 
 .overlay button {

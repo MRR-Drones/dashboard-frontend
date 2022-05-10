@@ -7,8 +7,7 @@ import Map from '../../components/Map/Map';
 
 export default function Home() {
   return (
-    <PageWrapper>
-      <p>overview</p>
+    <PageWrapper fullscreen>
       <Map />
     </PageWrapper>
   );
