@@ -4,6 +4,9 @@ import './Map.scss';
 import * as turf from '@turf/turf';
 // import './mapbox-gl.css';
 
+// Import FontAwesome
+// import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 export default function Map() {
@@ -41,6 +44,65 @@ export default function Map() {
         },
       ],
     };
+
+    map.loadImage('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png', (error, image) => {
+      if (error) throw error;
+      map.addImage('custom-marker', image);
+      // Add a GeoJSON source with 2 points
+      map.addSource('points', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            {
+              // 1
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [5.444334, 51.44042],
+              },
+              properties: {},
+            },
+            {
+              // 2
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [5.472818, 51.444058],
+              },
+              properties: {},
+            },
+            {
+              // 3
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [5.509539, 51.442132],
+              },
+              properties: {},
+            },
+            {
+              // 4
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [5.479339, 51.422012],
+              },
+              properties: {},
+            },
+            {
+              // 5
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [5.444334, 51.44042],
+              },
+              properties: {},
+            },
+          ],
+        },
+      });
+    });
 
     // A single point that animates along the route.
     // Coordinates are initially set to origin.
@@ -117,6 +179,15 @@ export default function Map() {
           'icon-rotation-alignment': 'map',
           'icon-allow-overlap': true,
           'icon-ignore-placement': true,
+        },
+      });
+
+      map.addLayer({
+        id: 'points',
+        type: 'symbol',
+        source: 'points',
+        layout: {
+          'icon-image': 'custom-marker',
         },
       });
 
