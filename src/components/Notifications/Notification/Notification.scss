@@ -1,11 +1,11 @@
 @import 'src/styles/variables';
 .Notification {
-    width: fit-content;
-    padding: $spacing-016;
-    background-color: $super-light-gray;
-    .heading {
-        display: flex;
-        flex-direction: row;
-        column-gap: $spacing-012;
-    }
+  width: fit-content;
+  padding: $spacing-016;
+  background-color: $super-light-gray;
+  .heading {
+    display: flex;
+    flex-direction: row;
+    column-gap: $spacing-012;
+  }
 }
