@@ -1,34 +1,32 @@
 @import 'src/styles/variables';
-
 .PageWrapper {
-  max-width: 100vw;
-  overflow: hidden;
-  background-color: $super-light-gray;
-  min-height: 100vh;
-  padding-left: 60px;
-
-  &.sidebar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-
-  .inner {
-    display: grid;
-    gap: $spacing-012;
-    padding: $spacing-048;
-    max-width: 100%;
+    max-width: 100vw;
     overflow: hidden;
-    height: fit-content;
-
-    &.fullscreen {
-      padding: 0;
+    background-color: $super-light-gray;
+    min-height: 100vh;
+    padding-left: 60px;
+    &.sidebar {
+        display: grid;
+        grid-template-columns: 1fr auto;
     }
-  }
-
-  .sidebar {
-    width: 400px;
-    background-color: $white;
-    height: 100vh;
-    padding: $spacing-048 $spacing-024;
-  }
+    .inner {
+        display: grid;
+        gap: $spacing-012;
+        padding: $spacing-048;
+        max-width: 100%;
+        overflow: hidden;
+        height: fit-content;
+        &.fullscreen {
+            padding: 0;
+        }
+    }
+    .sidebar {
+        width: 400px;
+        background-color: $white;
+        height: 100vh;
+        padding: $spacing-048 $spacing-024;
+        h2 {
+            margin-bottom: $spacing-024;
+        }
+    }
 }

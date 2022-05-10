@@ -11,11 +11,12 @@ export default function Home() {
     <PageWrapper
       sidebar={
         <div className="sidebar">
+          <h2>Latest activity</h2>
           <Notifications />
         </div>
       }
     >
-      <div className="home-inner">
+      <div className="home">
         <h2>Homepage</h2>
         <div className="map">
           <div className="map-inner" />

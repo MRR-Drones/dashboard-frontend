@@ -7,10 +7,10 @@ import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
 
-export default function Notification({ messageType, messageTitle, message }) {
+export default function Notification({ messageType, messageTitle, message, firstChild }) {
   return (
-    <div className="Notification">
-      <div>
+    <div className={`Notification ${firstChild ? 'first-child' : ''}`}>
+      <div className="messageContent">
         <div className="heading">
           {messageType === 'check' && <FontAwesomeIcon className="iconCheck" icon={solid('check-circle')} />}
           {messageType === 'warning' && <FontAwesomeIcon className="iconWarning" icon={solid('circle-exclamation')} />}
@@ -24,7 +24,7 @@ export default function Notification({ messageType, messageTitle, message }) {
           console.log('geklikt');
         }}
         aria-hidden="true"
-        className="iconError"
+        className="iconClose"
         icon={solid('times')}
       />
     </div>
