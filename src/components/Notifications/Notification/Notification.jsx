@@ -31,7 +31,7 @@ export default function Notification({ messageType, messageTitle, message, first
       >
         <FontAwesomeIcon
           onClick={() => {
-            console.log('geklikt');
+            // console.log('geklikt');
           }}
           aria-hidden="true"
           icon={solid('times')}
