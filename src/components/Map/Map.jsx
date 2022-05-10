@@ -5,7 +5,7 @@ import * as turf from '@turf/turf';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-function Map() {
+export default function Map() {
   const mapContainerRef = useRef(null);
 
   const hospitals = {
@@ -202,5 +202,3 @@ function Map() {
 
   return <div className="map-container" ref={mapContainerRef} />;
 }
-
-export default Map;
