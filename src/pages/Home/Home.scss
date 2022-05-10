@@ -5,6 +5,7 @@
   gap: $spacing-024;
   max-width: 100%;
   overflow: hidden;
+
   .map {
     height: 300px;
     width: 100%;
@@ -12,6 +13,7 @@
     background-color: $white;
     padding: $spacing-008;
     border: 1px solid $light-gray;
+
     .map-inner {
       border-radius: $border-radius-5;
       background-color: $super-light-gray;
@@ -19,10 +21,12 @@
       width: 100%;
     }
   }
+
   .row {
     display: grid;
     gap: $spacing-008;
   }
+
   .cards-grid-small {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));

@@ -5,22 +5,26 @@
   gap: $spacing-024;
   max-width: 100%;
   overflow: hidden;
+
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: $spacing-016;
     max-width: 100%;
     overflow: hidden;
+
     @media only screen and (max-width: 400px) {
       grid-template-columns: 1fr;
     }
   }
+
   .cards-grid-small {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: $spacing-016;
     max-width: 100%;
     overflow: hidden;
+
     @media only screen and (max-width: 400px) {
       grid-template-columns: 1fr;
     }
