@@ -28,8 +28,8 @@ export default function SideNav({ path }) {
         <NavItem link="/overview" path={path}>
           {path === '/overview' ? <FontAwesomeIcon icon={solid('map')} /> : <FontAwesomeIcon icon={regular('map')} />}
         </NavItem>
-        <NavItem link="/settings" path={path}>
-          {path === '/settings' ? <FontAwesomeIcon icon={solid('cog')} /> : <FontAwesomeIcon icon={regular('cog')} />}
+        <NavItem link="/testpage" path={path}>
+          {path === '/testpage' ? <FontAwesomeIcon icon={solid('cog')} /> : <FontAwesomeIcon icon={regular('cog')} />}
         </NavItem>
       </div>
       <div className="bottom">
