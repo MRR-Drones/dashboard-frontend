@@ -11,25 +11,33 @@ import Clock from './Clock/Clock';
 import NotificationsBell from './NotificationsBell/NotificationsBell';
 import Weather from './Weather/Weather';
 
-export default function SideNav({ path }) {
+export default function SideNav() {
   return (
     <div className="SideNav">
       <div className="top">
         <FontAwesomeIcon icon={solid('star')} />
       </div>
       <div className="middle">
-        <NavItem link="/" path={path}>
-          {path === '/' ? (
+        <NavItem link="/">
+          {window.location.pathname === '/' ? (
             <FontAwesomeIcon icon={solid('chart-tree-map')} />
           ) : (
             <FontAwesomeIcon icon={regular('chart-tree-map')} />
           )}
         </NavItem>
-        <NavItem link="/overview" path={path}>
-          {path === '/overview' ? <FontAwesomeIcon icon={solid('map')} /> : <FontAwesomeIcon icon={regular('map')} />}
+        <NavItem link="/overview">
+          {window.location.pathname === '/overview' ? (
+            <FontAwesomeIcon icon={solid('map')} />
+          ) : (
+            <FontAwesomeIcon icon={regular('map')} />
+          )}
         </NavItem>
-        <NavItem link="/settings" path={path}>
-          {path === '/settings' ? <FontAwesomeIcon icon={solid('cog')} /> : <FontAwesomeIcon icon={regular('cog')} />}
+        <NavItem link="/settings">
+          {window.location.pathname === '/settings' ? (
+            <FontAwesomeIcon icon={solid('cog')} />
+          ) : (
+            <FontAwesomeIcon icon={regular('cog')} />
+          )}
         </NavItem>
       </div>
       <div className="bottom">
