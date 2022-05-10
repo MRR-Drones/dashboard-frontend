@@ -5,16 +5,25 @@
     flex-direction: row;
     width: 100%;
     padding: $spacing-016 0;
+    max-width: 100%;
+    gap: $spacing-024;
     border-bottom: 1px solid $light-gray;
     &.first-child {
         border-top: 1px solid $light-gray;
     }
     .title {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: auto 1fr;
         align-items: center;
         column-gap: $spacing-012;
         margin-bottom: $spacing-008;
+        max-width: 100%;
+        h4 {
+            overflow: hidden;
+            max-width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         .iconCheck {
             color: $green;
         }
