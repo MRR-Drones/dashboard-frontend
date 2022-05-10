@@ -15,7 +15,7 @@ export default function Home() {
         </div>
       }
     >
-      <div className="home">
+      <div className="home-inner">
         <h2>Homepage</h2>
         <div className="map">
           <div className="map-inner" />
