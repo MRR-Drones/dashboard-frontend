@@ -14,7 +14,7 @@ export default function Notification({ messageType }) {
         {messageType === 'check' && <FontAwesomeIcon className="iconCheck" icon={solid('check-circle')} />}
         {messageType === 'warning' && <FontAwesomeIcon className="iconWarning" icon={solid('circle-exclamation')} />}
         {messageType === 'error' && <FontAwesomeIcon className="iconError" icon={solid('times-circle')} />}
-        <p className="title">No</p>
+        <p className="title">Notification message</p>
       </div>
     </div>
   );
