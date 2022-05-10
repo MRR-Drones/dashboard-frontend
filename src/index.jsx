@@ -3,7 +3,7 @@ import * as ReactDOMClient from 'react-dom/client';
 
 import App from './components/App/App';
 
-import './styles/_reset.scss';
+import './styles/reset.scss';
 import './styles/main.scss';
 import './styles/fonts.scss';
 import './styles/colors.scss';
