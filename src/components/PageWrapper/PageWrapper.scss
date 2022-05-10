@@ -1,14 +1,17 @@
 @import 'src/styles/variables';
+
 .PageWrapper {
   max-width: 100vw;
   overflow: hidden;
   background-color: $super-light-gray;
-  // min-height: 100vh;
+  min-height: 100vh;
   padding-left: 60px;
+
   &.sidebar {
     display: grid;
     grid-template-columns: 1fr auto;
   }
+
   .inner {
     display: grid;
     gap: $spacing-012;
@@ -16,7 +19,12 @@
     max-width: 100%;
     overflow: hidden;
     height: fit-content;
+
+    &.fullscreen {
+      padding: 0;
+    }
   }
+
   .sidebar {
     width: 400px;
     background-color: $white;
