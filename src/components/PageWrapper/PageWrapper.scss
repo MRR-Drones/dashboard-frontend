@@ -29,6 +29,22 @@
     width: 400px;
     background-color: $white;
     height: 100vh;
-    padding: $spacing-048 $spacing-024;
+    padding: $spacing-048 $spacing-032;
+    max-width: 400px;
+
+    .heading {
+      margin-bottom: $spacing-024;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: $spacing-016;
+      font-size: 25px;
+      max-width: 100%;
+
+      svg {
+        cursor: pointer;
+      }
+    }
   }
 }

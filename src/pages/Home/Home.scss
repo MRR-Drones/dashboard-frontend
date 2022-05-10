@@ -1,6 +1,6 @@
 @import 'src/styles/variables';
 
-.home-inner {
+.home {
   display: grid;
   gap: $spacing-024;
   max-width: 100%;
@@ -33,6 +33,7 @@
     gap: $spacing-016;
     max-width: 100%;
     overflow: hidden;
+
     @media only screen and (max-width: 400px) {
       grid-template-columns: 1fr;
     }
@@ -45,6 +46,7 @@
   gap: $spacing-016;
   max-width: 100%;
   overflow: hidden;
+
   @media only screen and (max-width: 400px) {
     grid-template-columns: 1fr;
   }
