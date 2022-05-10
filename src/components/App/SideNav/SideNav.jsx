@@ -32,8 +32,8 @@ export default function SideNav() {
             <FontAwesomeIcon icon={regular('map')} />
           )}
         </NavItem>
-        <NavItem link="/settings">
-          {window.location.pathname === '/settings' ? (
+        <NavItem link="/testpage">
+          {window.location.pathname === '/testpage' ? (
             <FontAwesomeIcon icon={solid('cog')} />
           ) : (
             <FontAwesomeIcon icon={regular('cog')} />
