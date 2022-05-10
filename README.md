@@ -21,6 +21,7 @@ System status:
 
 ```
 npm install
+npm run prepare
 npm start
 ```
 

@@ -1,0 +1,46 @@
+@import 'src/styles/variables';
+
+.login {
+  display: grid;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+
+  .left {
+    background-color: $light-gray;
+    max-width: 100vw;
+    background-image: url('../../assets/images/background-pattern.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-032;
+
+    img {
+      max-width: 600px;
+      width: 100%;
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    overflow: hidden;
+
+    .inner {
+      display: grid;
+      gap: $spacing-016;
+      padding: $spacing-032;
+      max-width: 350px;
+      width: 100%;
+
+      .button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
