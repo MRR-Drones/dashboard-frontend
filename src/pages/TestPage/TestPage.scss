@@ -1,13 +1,5 @@
 @import 'src/styles/variables';
 
-.home {
-  display: grid;
-  gap: $spacing-012;
-  padding: $spacing-032;
-  max-width: 100%;
-  overflow: hidden;
-}
-
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));

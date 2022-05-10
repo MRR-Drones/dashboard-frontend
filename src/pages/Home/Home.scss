@@ -2,25 +2,43 @@
 
 .home {
   display: grid;
-  gap: $spacing-012;
+  gap: $spacing-024;
   padding: $spacing-032;
   max-width: 100%;
   overflow: hidden;
+  .map {
+    height: 300px;
+    width: 100%;
+    border-radius: $border-radius-10;
+    background-color: $white;
+    padding: $spacing-008;
+    border: 1px solid $light-gray;
+    .map-inner {
+      border-radius: $border-radius-5;
+      background-color: $super-light-gray;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .row {
+    display: grid;
+    gap: $spacing-008;
+  }
+  .cards-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: $spacing-016;
+    max-width: 100%;
+    overflow: hidden;
+    @media only screen and (max-width: 400px) {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: $spacing-016;
-  max-width: 100%;
-  overflow: hidden;
-  @media only screen and (max-width: 400px) {
-    grid-template-columns: 1fr;
-  }
-}
-.cards-grid-small {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: $spacing-016;
   max-width: 100%;
   overflow: hidden;
