@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../shared.scss';
 import './TestPage.scss';
 
@@ -8,6 +8,8 @@ import PageWrapper from '../../components/PageWrapper/PageWrapper';
 import Card from '../../components/Card/Card';
 
 export default function TestPage() {
+  const [inputValue, setInputValue] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
   return (
     <PageWrapper>
       <div className="TestPage">
@@ -15,8 +17,22 @@ export default function TestPage() {
           test
         </Button>
         <Button>test</Button>
-        <Input label="email" placeholder="test" />
-        <Input white placeholder="test" />
+        <Input
+          value={inputValue}
+          handleChange={(event) => {
+            setInputValue(event.target.value);
+          }}
+          label="email"
+          placeholder="test"
+        />
+        <Input
+          value={inputValue2}
+          handleChange={(event) => {
+            setInputValue2(event.target.value);
+          }}
+          white
+          placeholder="test"
+        />
         <div className="cards-grid">
           <Card battery={20} speed={50} altitude={200} timeTravelled={23} number={1} status="offline" />
           <Card battery={20} speed={50} altitude={200} timeTravelled={23} number={2} status="active" />
