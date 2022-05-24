@@ -24,6 +24,42 @@ export default function Notifications() {
       message: 'message 3',
       messageType: 'check',
     },
+    {
+      id: 1,
+      messageTitle: 'titeltje 1',
+      message: 'message',
+      messageType: 'warning',
+    },
+    {
+      id: 2,
+      messageTitle: 'titeltje 2',
+      message: 'message 2',
+      messageType: 'error',
+    },
+    {
+      id: 3,
+      messageTitle: 'titeltje 3',
+      message: 'message 3',
+      messageType: 'check',
+    },
+    {
+      id: 1,
+      messageTitle: 'titeltje 1',
+      message: 'message',
+      messageType: 'warning',
+    },
+    {
+      id: 2,
+      messageTitle: 'titeltje 2',
+      message: 'message 2',
+      messageType: 'error',
+    },
+    {
+      id: 3,
+      messageTitle: 'titeltje 3',
+      message: 'message 3',
+      messageType: 'check',
+    },
   ];
 
   return (
