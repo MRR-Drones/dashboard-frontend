@@ -8,6 +8,7 @@ $black: #23262f;
 $red: #f3425b;
 $green: #67d7a3;
 $yellow: #ffc107;
+
 // Fonts
 $font: 'Avenir Next', sans-serif;
 $font-h1: 53px;
@@ -17,6 +18,7 @@ $font-h4: 18px; //20px in XD
 $font-large: 18px;
 $font-normal: 14px;
 $font-small: 12px;
+
 // Font weights
 $font-weight-ultralight: 200;
 $font-weight-regular: 400;
@@ -24,6 +26,7 @@ $font-weight-medium: 500;
 $font-weight-demibold: 600;
 $font-weight-bold: 700;
 $font-weight-heavy: 900;
+
 // Spacing
 $spacing-004: 4px;
 $spacing-008: 8px;
@@ -35,10 +38,11 @@ $spacing-048: 48px;
 $spacing-064: 64px;
 $spacing-096: 96px;
 $spacing-128: 128px;
+
 // Radius
 $border-radius-5: 5px;
 $border-radius-10: 10px;
+
 // Effects
 $transition: all 0.2s ease-in-out;
 $scale: scale(1.05);
-// Mixin
