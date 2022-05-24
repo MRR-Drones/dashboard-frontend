@@ -25,12 +25,55 @@
     }
   }
 
+  .sidebarToggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 999px;
+    position: fixed;
+    right: $spacing-016;
+    bottom: $spacing-016;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid $light-gray;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: 1000px) {
+      display: flex;
+    }
+  }
+  .shade {
+    display: none;
+    @media only screen and (max-width: 1000px) {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba($black, 0.3);
+      z-index: 4;
+      display: none;
+      &.open {
+        display: block;
+      }
+    }
+  }
+
   .sidebar {
     width: 400px;
     background-color: $white;
     height: 100vh;
     padding: $spacing-048 $spacing-032;
     max-width: 400px;
+    @media only screen and (max-width: 1000px) {
+      width: 80vw;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 5;
+      display: none;
+      &.open {
+        display: block;
+      }
+    }
 
     .heading {
       margin-bottom: $spacing-024;

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Components
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
@@ -15,8 +16,9 @@ import Card from '../../components/Card/Card';
 export default function Home() {
   return (
     <PageWrapper
+      sidebarIcon={<FontAwesomeIcon icon={regular('bell')} />}
       sidebar={
-        <div className="sidebar">
+        <>
           <div className="heading">
             <h2>Latest activity</h2>
             <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.25 }} whileTap={{ scale: 0.75 }}>
@@ -24,7 +26,7 @@ export default function Home() {
             </motion.div>
           </div>
           <Notifications />
-        </div>
+        </>
       }
     >
       <div className="home">
