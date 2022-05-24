@@ -1,0 +1,25 @@
+@import 'src/styles/variables';
+
+.tooltip {
+  position: absolute;
+  left: $spacing-048;
+  bottom: 50%;
+  transform: translateY(50%);
+  background-color: #fff;
+  border-radius: $border-radius-5;
+  z-index: 2;
+
+  &.bottom {
+    bottom: -$spacing-004;
+    transform: translateY(0%);
+  }
+}
+.shade {
+  z-index: 2;
+  height: 100vh;
+  width: calc(100vw - 60px);
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: rgba($black, 0.3);
+}
