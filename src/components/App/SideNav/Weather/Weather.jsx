@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Weather.scss';
 
 // Import FontAwesome
@@ -9,10 +9,19 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Tooltip from '../../../Tooltip/Tooltip';
 
 export default function Weather() {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   return (
     <div className="Weather">
-      <FontAwesomeIcon icon={regular('cloud-sun')} />
-      <Tooltip position="bottom">test inhoud tootlip</Tooltip>
+      <FontAwesomeIcon onClick={() => setTooltipOpen(!tooltipOpen)} icon={regular('cloud-sun')} />
+      <Tooltip
+        open={tooltipOpen}
+        onClose={() => {
+          setTooltipOpen(false);
+        }}
+        position="bottom"
+      >
+        test inhoud tootlip
+      </Tooltip>
     </div>
   );
 }
