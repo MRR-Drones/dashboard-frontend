@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NotificationsBell.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 
+// Import components
+import Tooltip from '../../../Tooltip/Tooltip';
+
 export default function NotificationsBell() {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   return (
     <div className="NotificationsBell">
-      <FontAwesomeIcon icon={regular('bell')} />
+      <FontAwesomeIcon
+        onClick={() => {
+          setTooltipOpen(!tooltipOpen);
+        }}
+        icon={regular('bell')}
+      />
+      <Tooltip
+        open={tooltipOpen}
+        onClose={() => {
+          setTooltipOpen(false);
+        }}
+        position="bottom"
+      >
+        test inhoud tootlip
+      </Tooltip>
     </div>
   );
 }
