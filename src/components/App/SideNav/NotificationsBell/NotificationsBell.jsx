@@ -14,14 +14,14 @@ export default function NotificationsBell() {
     <div className="NotificationsBell">
       <FontAwesomeIcon
         onClick={() => {
-          setTooltipOpen(true);
+          setTooltipOpen(!tooltipOpen);
         }}
         icon={regular('bell')}
       />
       <Tooltip
         open={tooltipOpen}
         onClose={() => {
-          setTooltipOpen(!tooltipOpen);
+          setTooltipOpen(false);
         }}
         position="bottom"
       >
