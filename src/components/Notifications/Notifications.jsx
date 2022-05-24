@@ -70,7 +70,7 @@ export default function Notifications() {
           messageTitle={item.messageTitle}
           message={item.message}
           messageType={item.messageType}
-          firstChild={index === 1}
+          firstChild={index === 0}
         />
       ))}
     </div>

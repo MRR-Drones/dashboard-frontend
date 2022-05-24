@@ -46,3 +46,23 @@ $border-radius-10: 10px;
 // Effects
 $transition: all 0.2s ease-in-out;
 $scale: scale(1.05);
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 14.5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: white;
+    padding-right: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($black, 0.15);
+    border-radius: 999px;
+    cursor: pointer;
+    border: 5px solid white;
+    border-top: 6px solid white;
+    border-bottom: 6px solid white;
+  }
+}

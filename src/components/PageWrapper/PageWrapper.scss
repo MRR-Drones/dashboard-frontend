@@ -29,8 +29,11 @@
     width: 400px;
     background-color: $white;
     height: 100vh;
-    padding: $spacing-048 $spacing-032;
+    padding: $spacing-048 0;
     max-width: 400px;
+    gap: $spacing-016;
+    overflow: hidden;
+    display: grid;
     @media only screen and (max-width: 1000px) {
       width: 80vw;
       position: fixed;
@@ -39,12 +42,12 @@
       z-index: 5;
       display: none;
       &.open {
-        display: block;
+        display: grid;
       }
     }
 
     .heading {
-      margin-bottom: $spacing-024;
+      padding: 0 $spacing-032;
       display: flex;
       justify-content: space-between;
       align-items: center;
