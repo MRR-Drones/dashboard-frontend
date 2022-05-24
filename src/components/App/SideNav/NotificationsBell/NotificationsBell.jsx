@@ -21,7 +21,7 @@ export default function NotificationsBell() {
       <Tooltip
         open={tooltipOpen}
         onClose={() => {
-          setTooltipOpen(false);
+          setTooltipOpen(!tooltipOpen);
         }}
         position="bottom"
       >
