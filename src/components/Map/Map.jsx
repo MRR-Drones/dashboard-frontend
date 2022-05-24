@@ -5,10 +5,6 @@ import mapboxgl from 'mapbox-gl';
 import './Map.scss';
 import * as turf from '@turf/turf';
 import axios from 'axios';
-// import './mapbox-gl.css';
-
-// Import FontAwesome
-// import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -16,20 +12,20 @@ export default function Map() {
   const mapContainerRef = useRef(null);
 
   const [points, getPoints] = useState('');
-  const url = 'http://localhost:3000/'; 
+  const url = 'http://localhost:3000/';
 
   const getAllPoints = () => {
-    axios.get(`${url}markers.geojson`)
-    .then((response) => {
-      const allPoints = response.data;
-      // Data to state
-      getPoints(allPoints);
-    })
-    .catch(error => console.error(`Error: ${error}`));
-  }
+    axios
+      .get(`${url}markers.geojson`)
+      .then((response) => {
+        const allPoints = response.data;
+        // Data to state
+        getPoints(allPoints);
+      })
+      .catch((error) => console.error(`Error: ${error}`));
+  };
 
   useEffect(() => {
-
     getAllPoints();
 
     const map = new mapboxgl.Map({
@@ -73,7 +69,7 @@ export default function Map() {
       map.addImage('custom-marker', image);
       map.addSource('points', {
         type: 'geojson',
-        data: "test",
+        data: 'test',
       });
     });
 

@@ -3,7 +3,8 @@
 .Input {
   max-width: 100%;
   overflow: hidden;
-
+  display: grid;
+  gap: $spacing-004;
   .label {
     font-size: $font-small;
   }

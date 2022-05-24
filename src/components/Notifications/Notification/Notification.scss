@@ -1,0 +1,64 @@
+@import 'src/styles/variables';
+
+.Notification {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding: $spacing-016 0;
+  max-width: 100%;
+  gap: $spacing-024;
+  border-bottom: 1px solid $light-gray;
+
+  &.first-child {
+    border-top: 1px solid $light-gray;
+  }
+
+  .title {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: $spacing-012;
+    margin-bottom: $spacing-008;
+    max-width: 100%;
+
+    h4 {
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .iconCheck {
+      color: $green;
+    }
+
+    .iconWarning {
+      color: $red;
+    }
+
+    .iconError {
+      color: $yellow;
+    }
+  }
+
+  .message {
+    max-height: 200px;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+  }
+
+  .iconClose {
+    align-self: center;
+    cursor: pointer;
+    opacity: 50%;
+
+    svg {
+      font-size: $font-h4;
+    }
+  }
+}

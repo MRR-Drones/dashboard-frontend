@@ -8,12 +8,14 @@
   max-width: 100%;
   display: grid;
   gap: $spacing-024;
+
   .top {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     column-gap: $spacing-012;
     position: relative;
+
     .border-left {
       width: 3px;
       height: 100%;
@@ -23,18 +25,23 @@
       border-bottom-right-radius: 999px;
       position: absolute;
       left: 0;
+      z-index: -1;
+
       &.active,
       &.online {
         background: $green;
       }
+
       &.offline {
         background: $red;
       }
     }
+
     .name {
       font-weight: $font-weight-demibold;
       font-size: $font-large;
     }
+
     .icon {
       background-color: $black;
       color: $white;
@@ -47,17 +54,21 @@
       font-size: $font-small;
       font-weight: $font-weight-demibold;
     }
+
     .route {
       grid-column: 1 / -1;
     }
   }
+
   .bottom {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     gap: $spacing-012;
+
     .icon-text {
       display: grid;
       gap: $spacing-008;
+
       p {
         font-size: $font-small;
       }

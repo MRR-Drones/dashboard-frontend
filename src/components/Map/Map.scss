@@ -1,13 +1,13 @@
 @import 'src/styles/variables';
 
 .map-container {
-  height: 100%; 
+  height: 100%;
   width: 100%;
 }
 
 .mapboxgl-canvas {
- width: 100% !important;
- height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .mapboxgl-ctrl-attrib-inner {
@@ -21,9 +21,9 @@
 .overlay {
   position: absolute;
   top: 100px;
-  left: 150px
+  left: 150px;
 }
-   
+
 .overlay button {
   background-color: #3386c0;
   color: #fff;
@@ -34,7 +34,7 @@
   cursor: pointer;
   border-radius: 3px;
 }
-   
+
 .overlay button:hover {
   background-color: #4ea0da;
 }

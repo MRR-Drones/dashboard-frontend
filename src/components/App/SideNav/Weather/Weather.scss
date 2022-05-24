@@ -1,0 +1,11 @@
+@import '../../../../styles/variables';
+
+.Weather {
+  color: #9a9a9a;
+  margin: auto;
+  font-size: 18px;
+  position: relative;
+  svg {
+    cursor: pointer;
+  }
+}
