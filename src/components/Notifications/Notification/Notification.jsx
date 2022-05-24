@@ -16,12 +16,9 @@ export default function Notification({ messageType, messageTitle, message, first
           {messageType === 'check' && <FontAwesomeIcon className="iconCheck" icon={solid('check-circle')} />}
           {messageType === 'warning' && <FontAwesomeIcon className="iconWarning" icon={solid('circle-exclamation')} />}
           {messageType === 'error' && <FontAwesomeIcon className="iconError" icon={solid('times-circle')} />}
-          <h4 className="messageTitle">
-            Notification message This is the notification messageThis is the notification messageThis is the
-            notification message{messageTitle}
-          </h4>
+          <h4 className="messageTitle">{messageTitle}</h4>
         </div>
-        <p className="message">This is the notification message{message}</p>
+        <p className="message">{message}</p>
       </div>
       <motion.div
         className="iconClose"
