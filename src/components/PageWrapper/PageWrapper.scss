@@ -34,6 +34,7 @@
     gap: $spacing-016;
     overflow: hidden;
     display: grid;
+    grid-template-rows: auto 1fr;
     @media only screen and (max-width: 1000px) {
       width: 80vw;
       position: fixed;
