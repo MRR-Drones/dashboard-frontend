@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './Weather.scss';
 
 // Import FontAwesome
@@ -8,15 +8,18 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 // Import components
 import Tooltip from '../../../Tooltip/Tooltip';
 
+//import context
+import { SideNavContext } from '../SideNav';
+
 export default function Weather() {
-  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const { weatherTooltipOpen, setWeatherTooltipOpen } = useContext(SideNavContext);
   return (
     <div className="Weather">
-      <FontAwesomeIcon onClick={() => setTooltipOpen(!tooltipOpen)} icon={regular('cloud-sun')} />
+      <FontAwesomeIcon onClick={() => setWeatherTooltipOpen(!weatherTooltipOpen)} icon={regular('cloud-sun')} />
       <Tooltip
-        open={tooltipOpen}
+        open={weatherTooltipOpen}
         onClose={() => {
-          setTooltipOpen(false);
+          setWeatherTooltipOpen(false);
         }}
         position="bottom"
       >
