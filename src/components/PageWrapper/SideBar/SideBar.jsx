@@ -32,7 +32,7 @@ export default function PageWrapper({ sidebar, sidebarIcon, sidebarOpen }) {
         onClick={() => {
           setSidebarOpen(false);
         }}
-        className={`sidenav-shade ${sidebarOpen ? 'open' : ''}`}
+        className={`sidebar-shade ${sidebarOpen ? 'open' : ''}`}
       />
       <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>{sidebar}</div>
     </>
