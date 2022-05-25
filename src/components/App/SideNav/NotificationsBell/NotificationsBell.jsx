@@ -12,12 +12,17 @@ import Tooltip from '../../../Tooltip/Tooltip';
 import { SideNavContext } from '../SideNav';
 
 export default function NotificationsBell() {
-  const { notificationsTooltipOpen, setNotificationsTooltipOpen } = useContext(SideNavContext);
+  const { notificationsTooltipOpen, setNotificationsTooltipOpen, setWeatherTooltipOpen } = useContext(SideNavContext);
   return (
     <div className="NotificationsBell">
       <FontAwesomeIcon
         onClick={() => {
-          setNotificationsTooltipOpen(!notificationsTooltipOpen);
+          if (notificationsTooltipOpen === true) {
+            setNotificationsTooltipOpen(false);
+          } else {
+            setNotificationsTooltipOpen(true);
+            setWeatherTooltipOpen(false);
+          }
         }}
         icon={regular('bell')}
       />

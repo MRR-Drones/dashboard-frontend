@@ -12,10 +12,20 @@ import Tooltip from '../../../Tooltip/Tooltip';
 import { SideNavContext } from '../SideNav';
 
 export default function Weather() {
-  const { weatherTooltipOpen, setWeatherTooltipOpen } = useContext(SideNavContext);
+  const { weatherTooltipOpen, setWeatherTooltipOpen, setNotificationsTooltipOpen } = useContext(SideNavContext);
   return (
     <div className="Weather">
-      <FontAwesomeIcon onClick={() => setWeatherTooltipOpen(!weatherTooltipOpen)} icon={regular('cloud-sun')} />
+      <FontAwesomeIcon
+        onClick={() => {
+          if (weatherTooltipOpen === true) {
+            setWeatherTooltipOpen(false);
+          } else {
+            setWeatherTooltipOpen(true);
+            setNotificationsTooltipOpen(false);
+          }
+        }}
+        icon={regular('cloud-sun')}
+      />
       <Tooltip
         open={weatherTooltipOpen}
         onClose={() => {
