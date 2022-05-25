@@ -8,7 +8,7 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 // Import components
 import Tooltip from '../../../Tooltip/Tooltip';
 
-//import context
+// Import context
 import { SideNavContext } from '../SideNav';
 
 export default function Weather() {
