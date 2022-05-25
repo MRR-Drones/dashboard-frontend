@@ -6,11 +6,15 @@
   background-color: $super-light-gray;
   min-height: 100vh;
   padding-left: 60px;
-
-  &.sidebar {
-    display: grid;
-    grid-template-columns: 1fr auto;
+  padding-right: 400px;
+  @media only screen and (max-width: 1000px) {
+    padding-right: 0;
   }
+
+  // &.sidebar {
+  //   display: grid;
+  //   grid-template-columns: 1fr auto;
+  // }
 
   .inner {
     display: grid;
@@ -35,11 +39,11 @@
     overflow: hidden;
     display: grid;
     grid-template-rows: auto 1fr;
+    position: fixed;
+    right: 0;
+    top: 0;
     @media only screen and (max-width: 1000px) {
       width: 80vw;
-      position: fixed;
-      right: 0;
-      top: 0;
       z-index: 5;
       display: none;
       &.open {
