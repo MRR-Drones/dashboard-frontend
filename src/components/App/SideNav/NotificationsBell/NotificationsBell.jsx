@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './NotificationsBell.scss';
 
 // Import FontAwesome
@@ -8,20 +8,28 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 // Import components
 import Tooltip from '../../../Tooltip/Tooltip';
 
+// Import context
+import { SideNavContext } from '../SideNav';
+
 export default function NotificationsBell() {
-  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const { notificationsTooltipOpen, setNotificationsTooltipOpen, setWeatherTooltipOpen } = useContext(SideNavContext);
   return (
     <div className="NotificationsBell">
       <FontAwesomeIcon
         onClick={() => {
-          setTooltipOpen(!tooltipOpen);
+          if (notificationsTooltipOpen === true) {
+            setNotificationsTooltipOpen(false);
+          } else {
+            setNotificationsTooltipOpen(true);
+            setWeatherTooltipOpen(false);
+          }
         }}
         icon={regular('bell')}
       />
       <Tooltip
-        open={tooltipOpen}
+        open={notificationsTooltipOpen}
         onClose={() => {
-          setTooltipOpen(false);
+          setNotificationsTooltipOpen(false);
         }}
         position="bottom"
       >
