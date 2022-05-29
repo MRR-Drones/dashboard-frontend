@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Components
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
