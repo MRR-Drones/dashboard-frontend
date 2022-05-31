@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
 import Map from '../../components/Map/Map';
 import DroneService from '../../services/drone.service';
+import MapOverlay from './MapOverlay/MapOverlay';
 
 export default function Home() {
   const getAllDrones = () => {
@@ -20,9 +21,10 @@ export default function Home() {
   return (
     <PageWrapper fullscreen>
       <Map />
-      <button onClick={getAllDrones} type="button">
+      {/* <button onClick={getAllDrones} type="button">
         Get All Drones
-      </button>
+      </button> */}
+      <MapOverlay />
     </PageWrapper>
   );
 }
