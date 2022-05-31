@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../shared.scss';
 import './Login.scss';
+
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import AuthService from '../../services/auth.service';
 
@@ -10,22 +12,21 @@ import Button from '../../components/Button/Button';
 
 // Import images
 import homeMockup from '../../assets/images/drone-home-macbook.png';
-import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const loginHandler = () => {
     toast.dismiss();
     if (!nameValue) {
-      toast.warn('Please enter your username!');
+      toast.warn('Please enter your username');
     } else if (!passwordValue) {
       toast.warn('Please enter your password');
     } else {
       AuthService.login(nameValue, passwordValue)
-        .then((response) => {
+        .then(() => {
           toast.success('Successfully logged in!');
           navigate('/overview');
         })

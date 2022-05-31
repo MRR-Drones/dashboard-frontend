@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useLayoutEffect, useState } from 'react';
 import { Router } from 'react-router-dom';
 

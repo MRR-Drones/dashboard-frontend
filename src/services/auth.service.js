@@ -1,9 +1,8 @@
-import { toast } from 'react-toastify';
 import api from './api';
 import TokenService from './token.service';
 
-const login = (username, password) => {
-  return api
+const login = (username, password) =>
+  api
     .post('/Auth/Login', {
       username,
       password,
@@ -15,10 +14,7 @@ const login = (username, password) => {
 
       return response.data;
     })
-    .catch((error) => {
-      return Promise.reject(error.response.data);
-    });
-};
+    .catch((error) => Promise.reject(error.response.data));
 
 const AuthService = {
   login,

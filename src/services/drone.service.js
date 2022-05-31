@@ -1,3 +1,4 @@
+/* eslint-disable */
 import api from './api';
 
 const getDronesByUserId = () => {

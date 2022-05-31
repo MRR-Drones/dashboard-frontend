@@ -1,5 +1,6 @@
+/* eslint-disable */
 import axios from 'axios';
-import history from '../custom/CustomHistory';
+import CustomHistory from '../custom/CustomHistory';
 import TokenService from './token.service';
 
 const instance = axios.create({
@@ -46,7 +47,7 @@ instance.interceptors.response.use(
           // console.log('JWT token expired');
         } else if (err.response.data.Message === 'INVALID_RF_TOKEN') {
           // Refresh token is expired and browser automatically removed it
-          history.replace('/login');
+          CustomHistory.replace('/login');
           console.log('Refresh token expired');
           return Promise.reject(err);
         } else {
