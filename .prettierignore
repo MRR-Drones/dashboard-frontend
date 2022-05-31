@@ -3,3 +3,4 @@ coverage
 dist
 src/lib
 node_modules
+*.geojson
