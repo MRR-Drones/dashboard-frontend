@@ -13,7 +13,7 @@ export default function Input({ label, handleChange, value, placeholder, outline
           placeholder={placeholder}
           className={`input ${white ? 'white' : ''} ${outline ? 'outline' : ''} `}
           style={{ width: `${fullwidth ? 'fullwidth' : ''}` }}
-          id="input"
+          // id="input"
         />
       </div>
     </div>
