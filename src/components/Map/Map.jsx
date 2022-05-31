@@ -14,6 +14,7 @@ export default function Map() {
   const [isLoading, setLoading] = useState(true);
   const [coordinates, setCoordinates] = useState('');
   const [map, setMap] = useState();
+
   const url = 'http://localhost:3000/';
 
   useEffect(() => {
@@ -53,9 +54,14 @@ export default function Map() {
   }, []);
 
   if (!isLoading) {
+    var dronePath = turf.lineString(coordinates);
+
+    var dronePathLength = turf.lineDistance(dronePath, 'kilometers');
+    var dronePoint = turf.along(dronePath, 0, 'kilometers');
+
     map.on('load', () => {
       // Add a data source containing GeoJSON data.
-      map.addSource('eindhoven', {
+      map.addSource('path', {
         type: 'geojson',
         data: {
           type: 'Feature',
@@ -67,17 +73,70 @@ export default function Map() {
         },
       });
 
+      console.log(coordinates);
       // Add a blue outline around the polygon.
       map.addLayer({
         id: 'outline',
         type: 'line',
-        source: 'eindhoven',
+        source: 'path',
         layout: {},
         paint: {
           'line-color': '#0080ff',
           'line-width': 3,
         },
       });
+
+      // Add markers
+      // map.loadImage('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png', (error, image) => {
+      //   if (error) throw error;
+      //   map.addImage('custom-marker', image);
+      //   map.addSource('markers', {
+      //     type: 'geojson',
+      //     data: coordinates[0],
+      //   });
+      // });
+
+      // map.addLayer({
+      //   id: 'markers',
+      //   type: 'symbol',
+      //   source: 'points',
+      //   layout: {
+      //     'icon-image': 'custom-marker',
+      //   },
+      // });
+
+      // Add a plane on the path
+      map.addSource('drone', {
+        type: 'geojson',
+        data: dronePoint,
+        maxzoom: 20,
+      });
+
+      map.addLayer({
+        id: 'drone',
+        type: 'circle',
+        source: 'drone',
+        layout: {},
+        paint: {
+          'circle-radius': 10,
+        },
+      });
+
+      var step = 0;
+      var numSteps = 500; //Change this to set animation resolution
+      var timePerStep = 20; //Change this to alter animation speed
+      var pSource = map.getSource('drone');
+      var interval = setInterval(function () {
+        step += 1;
+        if (step > numSteps) {
+          clearInterval(interval);
+        } else {
+          var curDistance = (step / numSteps) * dronePathLength;
+          var dronePoint = turf.along(dronePath, curDistance, 'kilometers');
+          pSource.setData(dronePoint);
+          // console.log(curDistance);
+        }
+      }, timePerStep);
     });
   }
 
