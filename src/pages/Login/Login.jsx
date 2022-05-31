@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import '../shared.scss';
 import './Login.scss';
 
-import { Link } from 'react-router-dom';
-
 // Import components
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -41,9 +39,9 @@ export default function Login() {
             placeholder="wachtwoord"
           />
           <div className="button-wrapper">
-            <Link to="/">
+            <a href="/">
               <Button>Sign in</Button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
