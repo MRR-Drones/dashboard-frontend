@@ -11,7 +11,7 @@ import DroneService from '../../services/drone.service';
 export default function Home() {
   const getAllDrones = () => {
     DroneService.getDronesByUserId()
-      .then((response) => console.log(response))
+      .then(() => {})
       .catch((err) => {
         toast.error(err.Message);
       });
