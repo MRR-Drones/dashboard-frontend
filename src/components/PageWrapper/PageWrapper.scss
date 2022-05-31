@@ -6,15 +6,13 @@
   background-color: $super-light-gray;
   min-height: 100vh;
   padding-left: 60px;
-  padding-right: 400px;
-  @media only screen and (max-width: 1000px) {
-    padding-right: 0;
-  }
 
-  // &.sidebar {
-  //   display: grid;
-  //   grid-template-columns: 1fr auto;
-  // }
+  &.sidebar {
+    padding-right: 400px;
+    @media only screen and (max-width: 1000px) {
+      padding-right: 0;
+    }
+  }
 
   .inner {
     display: grid;
