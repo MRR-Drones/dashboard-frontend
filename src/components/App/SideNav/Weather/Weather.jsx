@@ -33,7 +33,7 @@ export default function Weather() {
         }}
         position="bottom"
       >
-        test inhoud tootlip
+        <div className="Weather__tooltip" />
       </Tooltip>
     </div>
   );
