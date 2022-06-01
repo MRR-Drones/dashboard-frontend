@@ -1,0 +1,16 @@
+@import 'src/styles/variables';
+
+.data-item {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: $spacing-012;
+  .left {
+  }
+  .right {
+    display: grid;
+    gap: $spacing-004;
+    .title {
+      font-weight: $font-weight-demibold;
+    }
+  }
+}

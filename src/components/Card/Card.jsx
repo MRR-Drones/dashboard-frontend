@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
-import StatusIndicator from './StatusIndicator/StatusIndicator';
+import StatusIndicator from '../StatusIndicator/StatusIndicator';
 
 export default function Card({ number, status, small, battery, speed, altitude, timeTravelled }) {
   return (

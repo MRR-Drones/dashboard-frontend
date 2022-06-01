@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+.map-overlay-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 300px;
+  max-height: 100%;
+  display: grid;
+  gap: $spacing-048;
+  height: fit-content;
+  grid-template-rows: auto 1fr;
+  padding: $spacing-048 0 $spacing-048 $spacing-048;
+  .heading {
+    display: flex;
+    gap: $spacing-016;
+    align-items: center;
+    svg {
+      font-size: 25px;
+    }
+  }
+}
