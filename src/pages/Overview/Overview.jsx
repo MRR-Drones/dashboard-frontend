@@ -21,9 +21,9 @@ export default function Home() {
   return (
     <PageWrapper fullscreen>
       <Map />
-      {/* <button onClick={getAllDrones} type="button">
+      <button className="get-all-drones" onClick={getAllDrones} type="button">
         Get All Drones
-      </button> */}
+      </button>
       <MapOverlay />
     </PageWrapper>
   );

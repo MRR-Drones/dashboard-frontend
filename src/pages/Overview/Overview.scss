@@ -1,1 +1,11 @@
 @import 'src/styles/variables';
+
+.get-all-drones {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: $blue;
+  color: white;
+  border-radius: $border-radius-10;
+  padding: 10px 20px;
+}

@@ -10,7 +10,6 @@ import DataBar from './DataBar/DataBar';
 
 export default function MapOverlay() {
   return (
-    //<div className="map-overlay">
     <div className="map-overlay-left">
       <span className="heading">
         <FontAwesomeIcon icon={regular('chevron-left')} />
@@ -18,6 +17,5 @@ export default function MapOverlay() {
       </span>
       <DataBar />
     </div>
-    //</div>
   );
 }
