@@ -8,6 +8,8 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 // Import components
 import StatusIndicator from '../../../../components/StatusIndicator/StatusIndicator';
 import DataItem from './DataItem/DataItem';
+import CoordinatesBox from './CoordinatesBox/CoordinatesBox';
+import Button from '../../../../components/Button/Button';
 
 export default function DataBar({ number = 1, status = 'online' }) {
   const data = [
@@ -73,6 +75,10 @@ export default function DataBar({ number = 1, status = 'online' }) {
         {data.map((item) => (
           <DataItem key={item.id} icon={item.icon} title={item.title} data={item.data} dataUnit={item.dataUnit} />
         ))}
+        <CoordinatesBox lat="200" long="-120" alt="200" />
+        <Button outlined fullwidth>
+          More data
+        </Button>
       </div>
     </div>
   );

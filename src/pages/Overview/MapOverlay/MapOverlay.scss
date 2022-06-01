@@ -19,7 +19,7 @@
   max-height: 100%;
   display: grid;
   gap: $spacing-048;
-  height: 100%;
+  height: fit-content;
   grid-template-rows: auto 1fr;
   padding: $spacing-048 0 $spacing-048 $spacing-048;
   .heading {

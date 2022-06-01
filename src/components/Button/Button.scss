@@ -20,4 +20,9 @@
   &.red {
     background-color: $red;
   }
+  &.outlined {
+    border: 1px solid $blue;
+    color: $blue;
+    background-color: $white;
+  }
 }

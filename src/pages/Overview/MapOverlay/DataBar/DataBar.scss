@@ -8,9 +8,11 @@
   border: 1px solid $light-gray;
   border-radius: $border-radius-10;
   padding: 20px;
+  overflow: hidden;
 
   display: grid;
   gap: $spacing-032;
+  grid-template-rows: auto 1fr;
   .top {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -63,5 +65,10 @@
   .bottom {
     display: grid;
     gap: $spacing-024;
+    overflow: auto;
+    @include scrollbar;
+    max-height: 100%;
+    margin-right: -20px;
+    padding-right: 20px;
   }
 }

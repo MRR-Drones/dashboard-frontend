@@ -1,0 +1,27 @@
+@import 'src/styles/variables';
+
+.coordinates-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid $light-gray;
+  border-radius: $border-radius-5;
+  padding: $spacing-008;
+  margin-top: -$spacing-012;
+  justify-content: center;
+  gap: $spacing-004;
+  p {
+    text-align: center;
+    display: flex;
+    gap: $spacing-008;
+    justify-content: center;
+    align-items: center;
+    span {
+      color: $blue;
+      font-weight: $font-weight-demibold;
+    }
+  }
+  .fullwidth {
+    grid-column: 1 / -1;
+    margin: auto;
+  }
+}
