@@ -87,23 +87,23 @@ export default function Map() {
       });
 
       // Add markers
-      // map.loadImage('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png', (error, image) => {
-      //   if (error) throw error;
-      //   map.addImage('custom-marker', image);
-      //   map.addSource('markers', {
-      //     type: 'geojson',
-      //     data: coordinates[0],
-      //   });
-      // });
+      // https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
 
-      // map.addLayer({
-      //   id: 'markers',
-      //   type: 'symbol',
-      //   source: 'points',
-      //   layout: {
-      //     'icon-image': 'custom-marker',
-      //   },
-      // });
+      for (const coordinate of coordinates) {
+        // create a HTML element for each feature
+        const el = document.createElement('div');
+        el.className = 'marker';
+        console.log(coordinate);
+
+        // make a marker for each feature and add it to the map
+        new mapboxgl.Marker(el)
+          .setLngLat(coordinate)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(`<h3>${coordinate[0]}</h3><p>${coordinate[1]}</p>`)
+          )
+          .addTo(map);
+      }
 
       // Add a plane on the path
       map.addSource('drone', {
