@@ -13,6 +13,8 @@ import Clock from './Clock/Clock';
 import NotificationsBell from './NotificationsBell/NotificationsBell';
 import Weather from './Weather/Weather';
 
+import logo from '../../../assets/images/logo.png';
+
 // Create and export context
 export const SideNavContext = React.createContext(undefined);
 
@@ -28,7 +30,7 @@ export default function SideNav() {
     >
       <div className="SideNav">
         <div className="top">
-          <FontAwesomeIcon icon={solid('star')} />
+          <img src={logo} alt="logo" />
         </div>
         <div className="middle">
           <NavItem link="/">
