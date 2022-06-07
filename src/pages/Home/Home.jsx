@@ -15,7 +15,6 @@ import Card from '../../components/Card/Card';
 export default function Home() {
   return (
     <PageWrapper
-      sidebarIcon={<FontAwesomeIcon icon={regular('bell')} />}
       sidebar={
         <>
           <div className="heading">
