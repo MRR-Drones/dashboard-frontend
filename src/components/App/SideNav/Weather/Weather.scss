@@ -5,7 +5,42 @@
   margin: auto;
   font-size: 18px;
   position: relative;
+
   svg {
     cursor: pointer;
+  }
+
+  .Weather__tooltip {
+    color: $black;
+    padding: 20px;
+
+    .Weather__tooltip__content {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+
+      .weather-icon {
+        margin-right: 10px;
+        font-size: calc($font-h1 - 7px);
+        color: #ffdd00;
+      }
+
+      h1 {
+        font-weight: 700;
+
+        em {
+          font-weight: 400;
+          font-size: $font-h3;
+        }
+      }
+    }
+
+    p {
+      margin-top: 10px;
+
+      em {
+        font-weight: 700;
+      }
+    }
   }
 }
