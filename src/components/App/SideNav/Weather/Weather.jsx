@@ -3,7 +3,7 @@ import './Weather.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Import components
 import Tooltip from '../../../Tooltip/Tooltip';
@@ -33,7 +33,18 @@ export default function Weather() {
         }}
         position="bottom"
       >
-        <div className="Weather__tooltip" />
+        <div className="Weather__tooltip">
+          <h3>Weather</h3>
+          <div className="Weather__tooltip__content">
+            <FontAwesomeIcon icon={solid('sun')} className="weather-icon" />
+            <h1>
+              23 <em>&deg;C</em>
+            </h1>
+          </div>
+          <p>
+            Sunny until <em>17:30</em>
+          </p>
+        </div>
       </Tooltip>
     </div>
   );
