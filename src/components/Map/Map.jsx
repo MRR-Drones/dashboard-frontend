@@ -61,24 +61,22 @@ export default function Map() {
 
     map.on('load', () => {
       // Add a data source containing GeoJSON data.
-      map.addSource('path', {
+      map.addSource('dronepath', {
         type: 'geojson',
         data: {
           type: 'Feature',
           geometry: {
             type: 'Polygon',
-            // These coordinates outline Maine.
             coordinates: [coordinates],
           },
         },
       });
 
-      console.log(coordinates);
       // Add a blue outline around the polygon.
       map.addLayer({
-        id: 'outline',
+        id: 'droneline',
         type: 'line',
-        source: 'path',
+        source: 'dronepath',
         layout: {},
         paint: {
           'line-color': '#0080ff',
@@ -93,7 +91,6 @@ export default function Map() {
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
-        console.log(coordinate);
 
         // make a marker for each feature and add it to the map
         new mapboxgl.Marker(el)
