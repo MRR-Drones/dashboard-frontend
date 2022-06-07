@@ -21,3 +21,10 @@
     }
   }
 }
+
+.map-overlay-right {
+  position: absolute;
+  right: 0;
+  top: calc($spacing-048 + 30px + $spacing-048);
+  padding: 0 $spacing-048 $spacing-048 0;
+}

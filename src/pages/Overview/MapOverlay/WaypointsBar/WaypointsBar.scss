@@ -1,0 +1,40 @@
+@import 'src/styles/variables';
+
+.waypoints-bar {
+  background-color: $white;
+  border: 1px solid $light-gray;
+  border-radius: $border-radius-10;
+  padding: 20px;
+  width: 250px;
+  max-width: 100%;
+  display: grid;
+  gap: $spacing-024;
+  .heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $spacing-012;
+    align-items: center;
+    svg {
+      font-size: 14px;
+      color: $blue;
+    }
+  }
+  .data {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-016;
+    span {
+      display: grid;
+      gap: $spacing-008;
+      p {
+        font-weight: $font-weight-demibold;
+        font-size: $font-small;
+        line-height: 1.2;
+        &:nth-child(2) {
+          color: $blue;
+          font-size: $font-normal;
+        }
+      }
+    }
+  }
+}
