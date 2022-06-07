@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+
+.waypoint {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $spacing-012;
+  align-items: center;
+  p {
+    font-size: $font-small;
+  }
+  svg {
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  &.active {
+    color: $blue;
+    p {
+      font-weight: $font-weight-demibold;
+      font-size: $font-normal;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 // Components
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
@@ -15,7 +15,6 @@ import Card from '../../components/Card/Card';
 export default function Home() {
   return (
     <PageWrapper
-      sidebarIcon={<FontAwesomeIcon icon={regular('bell')} />}
       sidebar={
         <>
           <div className="heading">

@@ -12,6 +12,7 @@
   gap: 12px;
   width: fit-content;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &.fullwidth {
     width: 100%;
@@ -19,5 +20,14 @@
 
   &.red {
     background-color: $red;
+  }
+  &.outlined {
+    border: 1px solid $blue;
+    color: $blue;
+    background-color: $white;
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
   }
 }

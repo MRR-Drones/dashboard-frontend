@@ -1,7 +1,10 @@
 import React from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import SideNav from './SideNav/SideNav';
 
@@ -9,11 +12,13 @@ import Home from '../../pages/Home/Home';
 import Overview from '../../pages/Overview/Overview';
 import TestPage from '../../pages/TestPage/TestPage';
 import Login from '../../pages/Login/Login';
+import CustomRouter from '../../custom/CustomRouter';
+import CustomHistory from '../../custom/CustomHistory';
 
 export default function App() {
   return (
     <div className="app">
-      <Router>
+      <CustomRouter history={CustomHistory}>
         {window.location.pathname !== '/login' && <SideNav />}
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -21,7 +26,9 @@ export default function App() {
           <Route path="/testpage" element={<TestPage />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-      </Router>
+      </CustomRouter>
+
+      <ToastContainer />
     </div>
   );
 }

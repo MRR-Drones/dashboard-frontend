@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import '../shared.scss';
 import './Login.scss';
 
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import AuthService from '../../services/auth.service';
+
 // Import components
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -12,6 +16,25 @@ import homeMockup from '../../assets/images/drone-home-macbook.png';
 export default function Login() {
   const [nameValue, setNameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const navigate = useNavigate();
+
+  const loginHandler = () => {
+    toast.dismiss();
+    if (!nameValue) {
+      toast.warn('Please enter your username');
+    } else if (!passwordValue) {
+      toast.warn('Please enter your password');
+    } else {
+      AuthService.login(nameValue, passwordValue)
+        .then(() => {
+          toast.success('Successfully logged in!');
+          navigate('/overview');
+        })
+        .catch((error) => {
+          toast.error(error.Message);
+        });
+    }
+  };
 
   return (
     <div className="login">
@@ -39,9 +62,7 @@ export default function Login() {
             placeholder="wachtwoord"
           />
           <div className="button-wrapper">
-            <a href="/">
-              <Button>Sign in</Button>
-            </a>
+            <Button onclick={loginHandler}>Sign in</Button>
           </div>
         </div>
       </div>
