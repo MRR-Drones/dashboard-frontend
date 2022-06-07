@@ -5,11 +5,22 @@
   margin: auto;
   font-size: 18px;
   position: relative;
+
   svg {
     cursor: pointer;
   }
 
   .Weather__tooltip {
     color: $black;
+
+    .Weather__tooltip__content {
+      display: flex;
+      align-items: center;
+
+      .weather-icon {
+        margin-right: 10px;
+        font-size: calc($font-h1 - 7px);
+      }
+    }
   }
 }

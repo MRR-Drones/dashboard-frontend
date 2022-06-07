@@ -38,7 +38,7 @@ export default function Weather() {
           <div className="Weather__tooltip__content">
             <FontAwesomeIcon icon={solid('sun')} className="weather-icon" />
             <h1>
-              23 <em>&deg;C</em>
+              23&nbsp;<em>&deg;C</em>
             </h1>
           </div>
           <p>
