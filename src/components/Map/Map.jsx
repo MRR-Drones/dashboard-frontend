@@ -1,18 +1,19 @@
 /* eslint-disable */
 
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
+// import mapboxgl from 'mapbox-gl';
 import './Map.scss';
 import * as turf from '@turf/turf';
 import axios from 'axios';
-
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+import Mapbox, { Marker, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl } from 'react-map-gl';
+import Pin from './pin';
+import { useMemo } from 'react';
 
 export default function Map() {
   const mapContainerRef = useRef(null);
 
   const [isLoading, setLoading] = useState(true);
-  const [coordinates, setCoordinates] = useState('');
+  const [coordinates, setCoordinates] = useState([]);
   const [map, setMap] = useState();
 
   const url = 'http://localhost:3000/';
@@ -33,19 +34,19 @@ export default function Map() {
 
     fetchData();
 
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/light-v10',
-      center: [5.4697225, 51.441642],
-      zoom: 12,
-      pitch: 40,
-      maxPitch: 70,
-      minZoom: 12,
-    });
+    // const map = new mapboxgl.Map({
+    //   container: mapContainerRef.current,
+    //   style: 'mapbox://styles/mapbox/light-v10',
+    //   center: [5.4697225, 51.441642],
+    //   zoom: 12,
+    //   pitch: 40,
+    //   maxPitch: 70,
+    //   minZoom: 12,
+    // });
 
-    setMap(map);
+    // setMap(map);
 
-    return () => map.remove();
+    // return () => map.remove();
 
     // -- Eindhoven --
     // style: 'mapbox://styles/mapbox/streets-v11',
@@ -53,93 +54,132 @@ export default function Map() {
     // zoom: 12,
   }, []);
 
-  if (!isLoading) {
-    var dronePath = turf.lineString(coordinates);
+  // if (!isLoading) {
+  //   var dronePath = turf.lineString(coordinates);
 
-    var dronePathLength = turf.lineDistance(dronePath, 'kilometers');
-    var dronePoint = turf.along(dronePath, 0, 'kilometers');
+  //   var dronePathLength = turf.lineDistance(dronePath, 'kilometers');
+  //   var dronePoint = turf.along(dronePath, 0, 'kilometers');
 
-    map.on('load', () => {
-      // Add a data source containing GeoJSON data.
-      map.addSource('dronepath', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: {
-            type: 'Polygon',
-            coordinates: [coordinates],
-          },
-        },
-      });
+  //   map.on('load', () => {
+  //     // Add a data source containing GeoJSON data.
+  //     map.addSource('dronepath', {
+  //       type: 'geojson',
+  //       data: {
+  //         type: 'Feature',
+  //         geometry: {
+  //           type: 'Polygon',
+  //           coordinates: [coordinates],
+  //         },
+  //       },
+  //     });
 
-      // Add a blue outline around the polygon.
-      map.addLayer({
-        id: 'droneline',
-        type: 'line',
-        source: 'dronepath',
-        layout: {},
-        paint: {
-          'line-color': '#0080ff',
-          'line-width': 3,
-        },
-      });
+  //     // Add a blue outline around the polygon.
+  //     map.addLayer({
+  //       id: 'droneline',
+  //       type: 'line',
+  //       source: 'dronepath',
+  //       layout: {},
+  //       paint: {
+  //         'line-color': '#0080ff',
+  //         'line-width': 3,
+  //       },
+  //     });
 
-      // Add markers
-      // https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
+  //     // Add markers
+  //     // https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
 
-      for (const coordinate of coordinates) {
-        // create a HTML element for each feature
-        const el = document.createElement('div');
-        el.className = 'marker';
+  //     for (const coordinate of coordinates) {
+  //       // create a HTML element for each feature
+  //       const el = document.createElement('div');
+  //       el.className = 'marker';
 
-        // make a marker for each feature and add it to the map
-        new mapboxgl.Marker(el)
-          .setLngLat(coordinate)
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(`<h3>${coordinate[0]}</h3><p>${coordinate[1]}</p>`)
-          )
-          .addTo(map);
-      }
+  //       // make a marker for each feature and add it to the map
+  //       new mapboxgl.Marker(el)
+  //         .setLngLat(coordinate)
+  //         .setPopup(
+  //           new mapboxgl.Popup({ offset: 25 }) // add popups
+  //             .setHTML(`<h3>${coordinate[0]}</h3><p>${coordinate[1]}</p>`)
+  //         )
+  //         .addTo(map);
+  //     }
 
-      // Add a plane on the path
-      map.addSource('drone', {
-        type: 'geojson',
-        data: dronePoint,
-        maxzoom: 20,
-      });
+  //     // Add a plane on the path
+  //     map.addSource('drone', {
+  //       type: 'geojson',
+  //       data: dronePoint,
+  //       maxzoom: 20,
+  //     });
 
-      map.addLayer({
-        id: 'drone',
-        type: 'circle',
-        source: 'drone',
-        layout: {},
-        paint: {
-          'circle-radius': 10,
-        },
-      });
+  //     map.addLayer({
+  //       id: 'drone',
+  //       type: 'circle',
+  //       source: 'drone',
+  //       layout: {},
+  //       paint: {
+  //         'circle-radius': 10,
+  //       },
+  //     });
 
-      var step = 0;
-      var numSteps = 500; //Change this to set animation resolution
-      var timePerStep = 20; //Change this to alter animation speed
-      var pSource = map.getSource('drone');
-      var interval = setInterval(function () {
-        step += 1;
-        if (step > numSteps) {
-          clearInterval(interval);
-        } else {
-          var curDistance = (step / numSteps) * dronePathLength;
-          var dronePoint = turf.along(dronePath, curDistance, 'kilometers');
-          pSource.setData(dronePoint);
-          // console.log(curDistance);
-        }
-      }, timePerStep);
-    });
-  }
+  //     var step = 0;
+  //     var numSteps = 500; //Change this to set animation resolution
+  //     var timePerStep = 20; //Change this to alter animation speed
+  //     var pSource = map.getSource('drone');
+  //     var interval = setInterval(function () {
+  //       step += 1;
+  //       if (step > numSteps) {
+  //         clearInterval(interval);
+  //       } else {
+  //         var curDistance = (step / numSteps) * dronePathLength;
+  //         var dronePoint = turf.along(dronePath, curDistance, 'kilometers');
+  //         pSource.setData(dronePoint);
+  //         // console.log(curDistance);
+  //       }
+  //     }, timePerStep);
+  //   });
+  // }
+
+  const markers = useMemo(() => {
+    return coordinates.map((c, index) => (
+      <Marker
+        key={`marker-${index}`}
+        longitude={c[0]}
+        latitude={c[1]}
+        anchor="bottom"
+        onClick={(e) => {
+          // If we let the click event propagates to the map, it will immediately close the popup
+          // with `closeOnClick: true`
+          e.originalEvent.stopPropagation();
+          alert('It works!');
+        }}
+      >
+        <Pin />
+      </Marker>
+    ));
+  }, [coordinates]);
 
   return (
     <>
-      <div className="map-container" ref={mapContainerRef} />
+      {/* <div className="map-container" ref={mapContainerRef} /> */}
+      <Mapbox
+        initialViewState={{
+          longitude: 5.4697225,
+          latitude: 51.441642,
+          zoom: 3.5,
+          zoom: 12,
+          pitch: 40,
+          maxPitch: 70,
+          minZoom: 12,
+        }}
+        mapStyle="mapbox://styles/mapbox/light-v10"
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+      >
+        <GeolocateControl position="bottom-right" />
+        <FullscreenControl position="bottom-right" />
+        <NavigationControl position="bottom-right" />
+        <ScaleControl />
+
+        {markers}
+      </Mapbox>
       <div className="overlay">
         <button type="button" id="replay">
           Replay
