@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.mapboxgl-map {
+  width: 100% !important;
+  height: 100vh !important;
+}
+
 .mapboxgl-canvas {
   width: 100% !important;
   height: 100vh !important;
