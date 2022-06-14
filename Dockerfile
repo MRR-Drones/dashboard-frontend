@@ -12,10 +12,9 @@ EXPOSE 3000
 
 # copy configs, no need to copy src files as they get bind mounted later on (see docker-compose)
 COPY package.json ./
-COPY package-lock.json ./
 
 # install all app dependencies
-RUN npm ci
+RUN npm i
 
 COPY ./ ./
 RUN npm run build
