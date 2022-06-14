@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
     push:
-        branches: [main]
+        branches: [main, docker-ci]
     workflow_dispatch:
 
 jobs:
@@ -13,7 +13,11 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
-
+            - name: Use .npmrc
+              uses: bduff9/use-npmrc@v1.1
+              with:
+                '@fortawesome:registry': https://npm.fontawesome.com/
+                '//npm.fontawesome.com/:_authToken': ${{ secrets.FONT_AWESOME_PRO_TOKEN }}
             - name: Make envfile dashboard
               uses: SpicyPizza/create-envfile@v1
               with:
