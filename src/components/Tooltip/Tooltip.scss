@@ -1,5 +1,4 @@
 @import 'src/styles/variables';
-
 .tooltip {
   position: absolute;
   left: $spacing-048;
@@ -7,14 +6,14 @@
   transform: translateY(50%);
   background-color: #fff;
   border-radius: $border-radius-5;
-  padding: $spacing-012;
+  padding: $spacing-024;
   z-index: 2;
-
   &.bottom {
     bottom: -$spacing-004;
     transform: translateY(0%);
   }
 }
+
 .shade {
   z-index: 2;
   height: 100vh;
