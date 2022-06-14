@@ -1,7 +1,7 @@
 FROM node:17-slim as builder
 
 # set working directory
-ARG app_path=/dashboard
+ARG app_path=.
 WORKDIR ${app_path}
 
 # add `node_modules/.bin` to $PATH
