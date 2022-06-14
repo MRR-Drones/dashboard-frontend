@@ -1,0 +1,43 @@
+name: Docker Image CI
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Make envfile dashboard
+              uses: SpicyPizza/create-envfile@v1
+              with:
+                  envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.APP_MAPBOX_ACCESS_TOKEN }}
+                  file_name: .env
+
+            - name: Build docker images
+              run: docker build -t ${{ secrets.DOCKER_REGISTRY }}/drone-dashboard:latest .
+
+            - name: Docker login
+              run: docker login ${{ secrets.DOCKER_REGISTRY }}/v2 -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+            - name: Push images to registry
+              run: docker push ${{ secrets.DOCKER_REGISTRY }}/drone-dashboard:latest 
+
+            - name: Push to server
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.VPS_IP }}
+                  username: ${{ secrets.VPS_USERNAME }}
+                  password: ${{ secrets.VPS_PASSWORD }}
+                  script: |
+                      cd ~/docker/containers/drone-dashboard
+                      docker-compose down
+                      docker-compose pull
+                      sleep 10s
+                      docker-compose up -d
