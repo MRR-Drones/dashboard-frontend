@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import 'mapbox-gl/dist/mapbox-gl.css';
 
 import SideNav from './SideNav/SideNav';
 
