@@ -13,6 +13,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.0.2
+        
+      - name: Make envfile dashboard
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
+          envkey_REACT_APP_OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+          file_name: ./build/.env
 
       - name: Use Node.js 16
         uses: actions/setup-node@v3.3.0
@@ -40,13 +47,6 @@ jobs:
 
       - name: Checkout build
         run: find build/ -print
-
-      - name: Make envfile dashboard
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_REACT_APP_MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
-          envkey_REACT_APP_OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
-          file_name: ./build/.env
 
       - name: Deploy app
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
