@@ -16,8 +16,7 @@ jobs:
             - name: Use .npmrc
               uses: bduff9/use-npmrc@v1.1
               with:
-                '@fortawesome:registry': https://npm.fontawesome.com/
-                '//npm.fontawesome.com/:_authToken': ${{ secrets.FONT_AWESOME_PRO_TOKEN }}
+                dot-npmrc: ${{ secrets.DOT_NPMRC }}
             - name: Make envfile dashboard
               uses: SpicyPizza/create-envfile@v1
               with:
