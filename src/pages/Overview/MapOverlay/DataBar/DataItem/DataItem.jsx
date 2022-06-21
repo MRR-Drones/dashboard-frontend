@@ -6,10 +6,10 @@ export default function DataItem({ icon, title, data, dataUnit }) {
     <div className="data-item">
       <div className="left">{icon}</div>
       <div className="right">
-        <p className="title">{title}</p>
-        <p>
-          {data} {dataUnit}
+        <p className="title">
+          {title} ({dataUnit})
         </p>
+        <p>{data}</p>
       </div>
     </div>
   );

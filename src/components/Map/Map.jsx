@@ -18,10 +18,13 @@ import MapGL, {
 import Pin from './pin';
 import { toast } from 'react-toastify';
 
-export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
+export default function Map({ waypoints, realTimeData, onWaypointAdded, onWaypointUpdated }) {
   // center: [5.4697225, 51.441642],
-  const [lineStrings, setLineStrings] = useState(null);
+  const [shortestPathsTurf, setShortestPathsTurf] = useState(null);
+  const [livePositionTurf, setLivePositionTurf] = useState(null);
   const [popupInfo, setPopupInfo] = useState(null);
+  const mapRef = useRef(null);
+  const [counter, setCounter] = useState(0);
 
   const clickHandler = (data) => {
     const coord = data.lngLat;
@@ -64,26 +67,46 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
       });
 
       const lineString = turf.lineString(coordinates);
-      setLineStrings(lineString);
+      setShortestPathsTurf(lineString);
     } else {
-      setLineStrings(null);
+      setShortestPathsTurf(null);
     }
   }, [waypoints]);
+
+  useEffect(() => {
+    if (realTimeData) {
+      const { lo: longitude, la: latitude } = realTimeData;
+
+      // mapRef.current.flyTo({
+      //   center: [longitude, latitude],
+      //   speed: 0.9,
+      //   zoom: 19,
+      // });
+
+      if (!longitude || !latitude) {
+        return;
+      }
+
+      const point = turf.point([longitude, latitude]);
+      setLivePositionTurf(point);
+      setCounter((oldVal) => oldVal + 1);
+    }
+  }, [realTimeData]);
 
   return (
     <>
       {/* <div className="map-container" ref={mapContainerRef} /> */}
       <MapGL
+        ref={mapRef}
         initialViewState={{
           longitude: 5.4697225,
           latitude: 51.441642,
           zoom: 3.5,
-          zoom: 12,
           pitch: 40,
           maxPitch: 70,
           minZoom: 12,
         }}
-        mapStyle="mapbox://styles/mapbox/light-v10"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={clickHandler}
       >
@@ -129,11 +152,12 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
           </Popup>
         )}
 
-        <Source id="my-data" type="geojson" data={lineStrings}>
+        {/* Lines showing shortest paths between waypoints */}
+        <Source id="shortest-paths" type="geojson" data={shortestPathsTurf}>
           {/* Simply setting lineStrings to null won't make the layer disapear! */}
           {waypoints.length >= 2 && (
             <Layer
-              id="drone"
+              id="shortest-paths"
               type="line"
               paint={{
                 'line-color': '#0080ff',
@@ -141,6 +165,22 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
               }}
             />
           )}
+        </Source>
+
+        {/* Live real-time position of the drone when it is flying */}
+        <Source id="drone" type="geojson" data={livePositionTurf}>
+          <Layer
+            id="drone-position"
+            type="symbol"
+            layout={{
+              // This icon is a part of the Mapbox Streets style.
+              // To view all images available in a Mapbox style, open
+              // the style in Mapbox Studio and click the "Images" tab.
+              // To add a new image to the style at runtime see
+              // https://docs.mapbox.com/mapbox-gl-js/example/add-image/
+              'icon-image': 'rocket-15',
+            }}
+          />
         </Source>
       </MapGL>
       <div className="overlay"></div>

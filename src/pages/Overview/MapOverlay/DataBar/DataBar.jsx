@@ -11,27 +11,27 @@ import DataItem from './DataItem/DataItem';
 import CoordinatesBox from './CoordinatesBox/CoordinatesBox';
 import Button from '../../../../components/Button/Button';
 
-export default function DataBar({ number = 1, status = 'online' }) {
+export default function DataBar({ realTimeData, number = 1, status = 'online' }) {
   const data = [
     {
       id: 1,
       icon: <FontAwesomeIcon icon={regular('battery-half')} />,
       title: 'Battery',
-      data: 83,
-      dataUnit: '%',
+      data: realTimeData ? realTimeData.ba : 'Unknown',
+      dataUnit: 'V',
     },
     {
       id: 2,
       icon: <FontAwesomeIcon icon={regular('timer')} />,
       title: 'Speed',
-      data: 20,
+      data: realTimeData ? realTimeData.cu : 'Unknown',
       dataUnit: 'km/h',
     },
     {
       id: 3,
       icon: <FontAwesomeIcon icon={regular('arrows-up-down')} />,
       title: 'Altitude',
-      data: 200,
+      data: realTimeData ? realTimeData.al : 'Unknown',
       dataUnit: 'm',
     },
     {
@@ -75,7 +75,7 @@ export default function DataBar({ number = 1, status = 'online' }) {
         {data.map((item) => (
           <DataItem key={item.id} icon={item.icon} title={item.title} data={item.data} dataUnit={item.dataUnit} />
         ))}
-        <CoordinatesBox lat="200" long="-120" alt="200" />
+        <CoordinatesBox lat={realTimeData?.la} long={realTimeData?.lo} alt={realTimeData?.al} />
         <Button outlined fullwidth>
           More data
         </Button>

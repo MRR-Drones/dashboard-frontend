@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../shared.scss';
 import './Overview.scss';
 
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
 import Map from '../../components/Map/Map';
 import MapOverlay from './MapOverlay/MapOverlay';
+import Chat from '../../components/SignalR/Chat';
 
 export default function Home() {
+  // center: [5.4697225, 51.441642],
   const [waypoints, setWaypoints] = useState([]);
   const [counter, setCounter] = useState(1);
+  const [isFlying, setIsFlying] = useState(false);
+  const [realTimeData, setRealTimeData] = useState(null);
+
+  // useEffect(() => {
+  //   if (isFlying) {
+  //     setLivePosition({
+  //       longitude: 5.442753738779601,
+  //       latitude: 51.44857998207158,
+  //     });
+  //   }
+  // }, [isFlying]);
+
+  useEffect(() => {
+    // console.log(realTimeData);
+  }, [realTimeData]);
 
   const waypointAddedHandler = (coord) => {
     setWaypoints((oldWps) => {
@@ -56,9 +73,21 @@ export default function Home() {
 
   return (
     <PageWrapper fullscreen>
-      <Map waypoints={waypoints} onWaypointAdded={waypointAddedHandler} onWaypointUpdated={waypointUpdatedHandler} />
+      <Chat onReceivingRealTimeData={setRealTimeData} />
+      <Map
+        realTimeData={realTimeData}
+        waypoints={waypoints}
+        onWaypointAdded={waypointAddedHandler}
+        onWaypointUpdated={waypointUpdatedHandler}
+      />
 
-      <MapOverlay waypoints={waypoints} onWaypointRemoved={waypointRemovedHandler} />
+      <MapOverlay
+        realTimeData={realTimeData}
+        waypoints={waypoints}
+        onWaypointRemoved={waypointRemovedHandler}
+        isFlying={isFlying}
+        onFlying={setIsFlying}
+      />
     </PageWrapper>
   );
 }
