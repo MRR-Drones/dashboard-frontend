@@ -5,162 +5,75 @@ import React, { useRef, useEffect, useState } from 'react';
 import './Map.scss';
 import * as turf from '@turf/turf';
 import axios from 'axios';
-import Mapbox, { Marker, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl } from 'react-map-gl';
+import MapGL, {
+  Marker,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl,
+  Source,
+  Layer,
+  Popup,
+} from 'react-map-gl';
 import Pin from './pin';
-import { useMemo } from 'react';
+import { toast } from 'react-toastify';
 
-export default function Map() {
-  const mapContainerRef = useRef(null);
+export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
+  // center: [5.4697225, 51.441642],
+  const [lineStrings, setLineStrings] = useState(null);
+  const [popupInfo, setPopupInfo] = useState(null);
 
-  const [isLoading, setLoading] = useState(true);
-  const [coordinates, setCoordinates] = useState([]);
-  const [map, setMap] = useState();
+  const clickHandler = (data) => {
+    const coord = data.lngLat;
 
-  const url = 'http://localhost:3000/';
+    // Check if these coordinates have already been added
+    const isCoordAlreadyExisted = waypoints.some((wp) => wp.longitude === coord.lng && wp.latitude === coord.lat);
+
+    if (isCoordAlreadyExisted) {
+      toast.error('Waypoint with the same coordinates has already exists!');
+    } else if (popupInfo) {
+      setPopupInfo(null);
+    } else {
+      onWaypointAdded({
+        longitude: coord.lng,
+        latitude: coord.lat,
+      });
+    }
+  };
+
+  // Show popup when marker clicked
+  const markerClickedHandler = (waypoint, e) => {
+    e.originalEvent.stopPropagation();
+
+    setPopupInfo(waypoint);
+  };
+
+  const markerDraggedHandler = (id, e) => {
+    setPopupInfo(null);
+    const newCoord = e.lngLat;
+    onWaypointUpdated(id, {
+      longitude: newCoord.lng,
+      latitude: newCoord.lat,
+    });
+  };
 
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(`${url}markers.geojson`)
-        .then((response) => {
-          const allPoints = response.data;
-          // Data to state
-          setCoordinates(allPoints.features[0].geometry.coordinates[0]);
-          // console.log(allPoints.features[0].geometry.coordinates[0]);
-          setLoading(false);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
-    };
+    if (waypoints.length >= 2) {
+      const coordinates = waypoints.map((wp) => {
+        return [wp.longitude, wp.latitude];
+      });
 
-    fetchData();
-
-    // const map = new mapboxgl.Map({
-    //   container: mapContainerRef.current,
-    //   style: 'mapbox://styles/mapbox/light-v10',
-    //   center: [5.4697225, 51.441642],
-    //   zoom: 12,
-    //   pitch: 40,
-    //   maxPitch: 70,
-    //   minZoom: 12,
-    // });
-
-    // setMap(map);
-
-    // return () => map.remove();
-
-    // -- Eindhoven --
-    // style: 'mapbox://styles/mapbox/streets-v11',
-    // center: [5.4697225, 51.441642],
-    // zoom: 12,
-  }, []);
-
-  // if (!isLoading) {
-  //   var dronePath = turf.lineString(coordinates);
-
-  //   var dronePathLength = turf.lineDistance(dronePath, 'kilometers');
-  //   var dronePoint = turf.along(dronePath, 0, 'kilometers');
-
-  //   map.on('load', () => {
-  //     // Add a data source containing GeoJSON data.
-  //     map.addSource('dronepath', {
-  //       type: 'geojson',
-  //       data: {
-  //         type: 'Feature',
-  //         geometry: {
-  //           type: 'Polygon',
-  //           coordinates: [coordinates],
-  //         },
-  //       },
-  //     });
-
-  //     // Add a blue outline around the polygon.
-  //     map.addLayer({
-  //       id: 'droneline',
-  //       type: 'line',
-  //       source: 'dronepath',
-  //       layout: {},
-  //       paint: {
-  //         'line-color': '#0080ff',
-  //         'line-width': 3,
-  //       },
-  //     });
-
-  //     // Add markers
-  //     // https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png
-
-  //     for (const coordinate of coordinates) {
-  //       // create a HTML element for each feature
-  //       const el = document.createElement('div');
-  //       el.className = 'marker';
-
-  //       // make a marker for each feature and add it to the map
-  //       new mapboxgl.Marker(el)
-  //         .setLngLat(coordinate)
-  //         .setPopup(
-  //           new mapboxgl.Popup({ offset: 25 }) // add popups
-  //             .setHTML(`<h3>${coordinate[0]}</h3><p>${coordinate[1]}</p>`)
-  //         )
-  //         .addTo(map);
-  //     }
-
-  //     // Add a plane on the path
-  //     map.addSource('drone', {
-  //       type: 'geojson',
-  //       data: dronePoint,
-  //       maxzoom: 20,
-  //     });
-
-  //     map.addLayer({
-  //       id: 'drone',
-  //       type: 'circle',
-  //       source: 'drone',
-  //       layout: {},
-  //       paint: {
-  //         'circle-radius': 10,
-  //       },
-  //     });
-
-  //     var step = 0;
-  //     var numSteps = 500; //Change this to set animation resolution
-  //     var timePerStep = 20; //Change this to alter animation speed
-  //     var pSource = map.getSource('drone');
-  //     var interval = setInterval(function () {
-  //       step += 1;
-  //       if (step > numSteps) {
-  //         clearInterval(interval);
-  //       } else {
-  //         var curDistance = (step / numSteps) * dronePathLength;
-  //         var dronePoint = turf.along(dronePath, curDistance, 'kilometers');
-  //         pSource.setData(dronePoint);
-  //         // console.log(curDistance);
-  //       }
-  //     }, timePerStep);
-  //   });
-  // }
-
-  const markers = useMemo(() => {
-    return coordinates.map((c, index) => (
-      <Marker
-        key={`marker-${index}`}
-        longitude={c[0]}
-        latitude={c[1]}
-        anchor="bottom"
-        onClick={(e) => {
-          // If we let the click event propagates to the map, it will immediately close the popup
-          // with `closeOnClick: true`
-          e.originalEvent.stopPropagation();
-          alert('It works!');
-        }}
-      >
-        <Pin />
-      </Marker>
-    ));
-  }, [coordinates]);
+      const lineString = turf.lineString(coordinates);
+      setLineStrings(lineString);
+    } else {
+      setLineStrings(null);
+    }
+  }, [waypoints]);
 
   return (
     <>
       {/* <div className="map-container" ref={mapContainerRef} /> */}
-      <Mapbox
+      <MapGL
         initialViewState={{
           longitude: 5.4697225,
           latitude: 51.441642,
@@ -170,21 +83,67 @@ export default function Map() {
           maxPitch: 70,
           minZoom: 12,
         }}
-        mapStyle="mapbox://styles/mapbox/light-v10"
+        mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+        onClick={clickHandler}
       >
         <GeolocateControl position="bottom-right" />
         <FullscreenControl position="bottom-right" />
         <NavigationControl position="bottom-right" />
         <ScaleControl />
 
-        {markers}
-      </Mapbox>
-      <div className="overlay">
-        <button type="button" id="replay">
-          Replay
-        </button>
-      </div>
+        {waypoints.map((wp) => (
+          <Marker
+            id={wp.id}
+            key={`marker-${wp.id}`}
+            draggable
+            longitude={wp.longitude}
+            latitude={wp.latitude}
+            anchor="bottom"
+            onClick={(e) => markerClickedHandler(wp, e)}
+            onDrag={(e) => markerDraggedHandler(wp.id, e)}
+          >
+            <Pin />
+          </Marker>
+        ))}
+
+        {popupInfo && (
+          <Popup
+            anchor="top"
+            longitude={popupInfo.longitude}
+            latitude={popupInfo.latitude}
+            onClose={() => setPopupInfo(null)}
+          >
+            <div>
+              <b>Name: </b>
+              {popupInfo.name}
+            </div>
+            <div>
+              <b>Longitude: </b>
+              {popupInfo.longitude}
+            </div>
+            <div>
+              <b>Latitude: </b>
+              {popupInfo.latitude}
+            </div>
+          </Popup>
+        )}
+
+        <Source id="my-data" type="geojson" data={lineStrings}>
+          {/* Simply setting lineStrings to null won't make the layer disapear! */}
+          {waypoints.length >= 2 && (
+            <Layer
+              id="drone"
+              type="line"
+              paint={{
+                'line-color': '#0080ff',
+                'line-width': 3,
+              }}
+            />
+          )}
+        </Source>
+      </MapGL>
+      <div className="overlay"></div>
     </>
   );
 }

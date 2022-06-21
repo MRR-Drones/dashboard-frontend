@@ -3,7 +3,8 @@
 .waypoint {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: $spacing-012;
+  margin-top: $spacing-012;
+  margin-bottom: $spacing-012;
   align-items: center;
   p {
     font-size: $font-small;
@@ -11,6 +12,7 @@
   svg {
     font-size: 12px;
     opacity: 0.75;
+    cursor: pointer;
   }
   &.active {
     color: $blue;

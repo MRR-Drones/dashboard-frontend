@@ -5,11 +5,11 @@ import './Waypoint.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
-export default function Waypoint({ name, active }) {
+export default function Waypoint({ id, name, active, onWaypointRemoved }) {
   return (
     <div className={`waypoint ${active ? 'active' : ''}`}>
       <p>{name}</p>
-      <FontAwesomeIcon icon={solid('grip-lines')} />
+      <FontAwesomeIcon icon={solid('trash-can')} color="red" onClick={() => onWaypointRemoved(id)} />
     </div>
   );
 }
