@@ -9,7 +9,7 @@ export default function Waypoint({ id, name, active, onWaypointRemoved }) {
   return (
     <div className={`waypoint ${active ? 'active' : ''}`}>
       <p>{name}</p>
-      <FontAwesomeIcon icon={solid('trash-can')} color="red" onClick={() => onWaypointRemoved(id)} />
+      <FontAwesomeIcon icon={solid('trash')} className="waypoint-trash" onClick={() => onWaypointRemoved(id)} />
     </div>
   );
 }

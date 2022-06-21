@@ -6,19 +6,32 @@
   margin-top: $spacing-012;
   margin-bottom: $spacing-012;
   align-items: center;
+
   p {
     font-size: $font-small;
   }
+
   svg {
     font-size: 12px;
     opacity: 0.75;
     cursor: pointer;
   }
+
   &.active {
     color: $blue;
+
     p {
       font-weight: $font-weight-demibold;
       font-size: $font-normal;
+    }
+  }
+
+  .waypoint-trash {
+    color: rgba($gray, 0.5);
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+      color: $red;
     }
   }
 }

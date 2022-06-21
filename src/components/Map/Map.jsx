@@ -1,10 +1,9 @@
 /* eslint-disable */
 
-import React, { useRef, useEffect, useState } from 'react';
-// import mapboxgl from 'mapbox-gl';
+import React, { useEffect, useState } from 'react';
 import './Map.scss';
+
 import * as turf from '@turf/turf';
-import axios from 'axios';
 import MapGL, {
   Marker,
   NavigationControl,
@@ -72,7 +71,6 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
 
   return (
     <>
-      {/* <div className="map-container" ref={mapContainerRef} /> */}
       <MapGL
         initialViewState={{
           longitude: 5.4697225,
@@ -136,7 +134,7 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
               id="drone"
               type="line"
               paint={{
-                'line-color': '#0080ff',
+                'line-color': '#acacac',
                 'line-width': 3,
               }}
             />
