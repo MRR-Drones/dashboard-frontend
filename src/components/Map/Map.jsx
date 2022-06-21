@@ -83,7 +83,7 @@ export default function Map({ waypoints, onWaypointAdded, onWaypointUpdated }) {
           maxPitch: 70,
           minZoom: 12,
         }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/mapbox/light-v10"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onClick={clickHandler}
       >
