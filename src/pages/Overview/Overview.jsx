@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../shared.scss';
 import './Overview.scss';
 
@@ -6,6 +6,7 @@ import PageWrapper from '../../components/PageWrapper/PageWrapper';
 import Map from '../../components/Map/Map';
 import MapOverlay from './MapOverlay/MapOverlay';
 import Chat from '../../components/SignalR/Chat';
+import testWaypoints from '../../components/Map/waypoints';
 
 export default function Home() {
   // center: [5.4697225, 51.441642],
@@ -13,6 +14,8 @@ export default function Home() {
   const [counter, setCounter] = useState(1);
   const [isFlying, setIsFlying] = useState(false);
   const [realTimeData, setRealTimeData] = useState(null);
+  const [realTimeRoutes, setRealTimeRoutes] = useState([]);
+  const testCounter = useRef(0);
 
   // useEffect(() => {
   //   if (isFlying) {
@@ -22,10 +25,31 @@ export default function Home() {
   //     });
   //   }
   // }, [isFlying]);
+  // const updateRealTimeData = () => {};
 
   useEffect(() => {
-    // console.log(realTimeData);
-  }, [realTimeData]);
+    const interval = setInterval(() => {
+      if (testCounter.current === testWaypoints.length) {
+        clearInterval(interval);
+
+        return;
+      }
+
+      const longtitude = testWaypoints[testCounter.current].lng;
+      const latitude = testWaypoints[testCounter.current].lat;
+
+      setRealTimeData({
+        la: latitude,
+        lo: longtitude,
+      });
+
+      setRealTimeRoutes((currRoutes) => [...currRoutes, [longtitude, latitude]]);
+
+      testCounter.current += 1;
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const waypointAddedHandler = (coord) => {
     setWaypoints((oldWps) => {
@@ -76,6 +100,7 @@ export default function Home() {
       <Chat onReceivingRealTimeData={setRealTimeData} />
       <Map
         realTimeData={realTimeData}
+        realTimeRoutes={realTimeRoutes}
         waypoints={waypoints}
         onWaypointAdded={waypointAddedHandler}
         onWaypointUpdated={waypointUpdatedHandler}

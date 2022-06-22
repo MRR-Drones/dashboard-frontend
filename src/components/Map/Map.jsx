@@ -18,16 +18,18 @@ import MapGL, {
 import Pin from './pin';
 import { toast } from 'react-toastify';
 
-export default function Map({ waypoints, realTimeData, onWaypointAdded, onWaypointUpdated }) {
+export default function Map({ waypoints, realTimeData, realTimeRoutes, onWaypointAdded, onWaypointUpdated }) {
   // center: [5.4697225, 51.441642],
   const [shortestPathsTurf, setShortestPathsTurf] = useState(null);
   const [livePositionTurf, setLivePositionTurf] = useState(null);
+  const [bearingTurf, setBearingTurf] = useState(0);
   const [popupInfo, setPopupInfo] = useState(null);
   const mapRef = useRef(null);
-  const [counter, setCounter] = useState(0);
+  const counter = useRef(0);
 
   const clickHandler = (data) => {
     const coord = data.lngLat;
+    console.log(coord);
 
     // Check if these coordinates have already been added
     const isCoordAlreadyExisted = waypoints.some((wp) => wp.longitude === coord.lng && wp.latitude === coord.lat);
@@ -76,12 +78,17 @@ export default function Map({ waypoints, realTimeData, onWaypointAdded, onWaypoi
   useEffect(() => {
     if (realTimeData) {
       const { lo: longitude, la: latitude } = realTimeData;
+      mapRef.current.panTo([longitude, latitude]);
 
-      // mapRef.current.flyTo({
-      //   center: [longitude, latitude],
-      //   speed: 0.9,
-      //   zoom: 19,
-      // });
+      if (counter.current === 0) {
+        mapRef.current.flyTo({
+          center: [longitude, latitude],
+          speed: 0.9,
+          zoom: 19,
+        });
+
+        counter.current += 1;
+      }
 
       if (!longitude || !latitude) {
         return;
@@ -89,9 +96,20 @@ export default function Map({ waypoints, realTimeData, onWaypointAdded, onWaypoi
 
       const point = turf.point([longitude, latitude]);
       setLivePositionTurf(point);
-      setCounter((oldVal) => oldVal + 1);
     }
   }, [realTimeData]);
+
+  useEffect(() => {
+    const numOfRoutes = realTimeRoutes.length;
+    if (numOfRoutes > 1) {
+      const start = turf.point(realTimeRoutes[numOfRoutes - 2]);
+      const end = turf.point(realTimeRoutes[numOfRoutes - 1]);
+      console.log(start);
+      console.log(end);
+      const bearing = turf.bearing(start, end);
+      setBearingTurf(bearing);
+    }
+  }, [realTimeRoutes]);
 
   return (
     <>
@@ -178,7 +196,11 @@ export default function Map({ waypoints, realTimeData, onWaypointAdded, onWaypoi
               // the style in Mapbox Studio and click the "Images" tab.
               // To add a new image to the style at runtime see
               // https://docs.mapbox.com/mapbox-gl-js/example/add-image/
-              'icon-image': 'rocket-15',
+              'icon-image': 'airport-15',
+              'icon-rotate': bearingTurf,
+              'icon-rotation-alignment': 'map',
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true,
             }}
           />
         </Source>
