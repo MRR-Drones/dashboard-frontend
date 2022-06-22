@@ -1,7 +1,7 @@
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import { useState, useEffect } from 'react';
 
-const Chat = ({ onReceivingRealTimeData }) => {
+const Chat = ({ onReceivingRealTimeData, onConnected, onReceivingLiveRawData }) => {
   const [connection, setConnection] = useState(null);
 
   useEffect(() => {
@@ -21,12 +21,12 @@ const Chat = ({ onReceivingRealTimeData }) => {
         await connection
           .start()
           .then(() => {
-            // var textarea = document.getElementById('debugMessagesTextArea');
-
-            // textarea.append('Connected!' + '\n');
+            onConnected();
 
             connection.on('FlightData', (flightData) => {
-              if (flightData.length < 20) return;
+              console.log(flightData);
+              onReceivingLiveRawData(flightData);
+              // if (flightData.length < 15) return;
               // Remove newline from end of string
               const trimmedData = flightData.trim();
               const groups = trimmedData.split('\n');

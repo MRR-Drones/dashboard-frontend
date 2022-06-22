@@ -1,21 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import '../shared.scss';
 import './Overview.scss';
 
+import { toast } from 'react-toastify';
 import PageWrapper from '../../components/PageWrapper/PageWrapper';
 import Map from '../../components/Map/Map';
 import MapOverlay from './MapOverlay/MapOverlay';
 import Chat from '../../components/SignalR/Chat';
-import testWaypoints from '../../components/Map/waypoints';
+import CommandService from '../../services/command.service';
 
 export default function Home() {
   // center: [5.4697225, 51.441642],
   const [waypoints, setWaypoints] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [isFlying, setIsFlying] = useState(false);
   const [realTimeData, setRealTimeData] = useState(null);
   const [realTimeRoutes, setRealTimeRoutes] = useState([]);
-  const testCounter = useRef(0);
 
   // useEffect(() => {
   //   if (isFlying) {
@@ -27,29 +26,37 @@ export default function Home() {
   // }, [isFlying]);
   // const updateRealTimeData = () => {};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (testCounter.current === testWaypoints.length) {
-        clearInterval(interval);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (testCounter.current === testWaypoints.length) {
+  //       clearInterval(interval);
 
-        return;
-      }
+  //       return;
+  //     }
 
-      const longtitude = testWaypoints[testCounter.current].lng;
-      const latitude = testWaypoints[testCounter.current].lat;
+  //     const longtitude = testWaypoints[testCounter.current].lng;
+  //     const latitude = testWaypoints[testCounter.current].lat;
 
-      setRealTimeData({
-        la: latitude,
-        lo: longtitude,
-      });
+  //     setRealTimeData({
+  //       la: latitude,
+  //       lo: longtitude,
+  //     });
 
-      setRealTimeRoutes((currRoutes) => [...currRoutes, [longtitude, latitude]]);
+  //     setRealTimeRoutes((currRoutes) => [...currRoutes, [longtitude, latitude]]);
 
-      testCounter.current += 1;
-    }, 500);
+  //     testCounter.current += 1;
+  //   }, 500);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  const updateRealTimeData = (liveData) => {
+    const { lo: longitude, la: latitude, if: isFlying } = liveData;
+
+    setRealTimeData(liveData);
+
+    if (isFlying) setRealTimeRoutes((currRoutes) => [...currRoutes, [longitude, latitude]]);
+  };
 
   const waypointAddedHandler = (coord) => {
     setWaypoints((oldWps) => {
@@ -95,9 +102,29 @@ export default function Home() {
     });
   };
 
+  const startFlightCommand = () => {
+    if (waypoints.length < 2) {
+      toast.warn('You should have at least 2 waypoints before flying the drone!');
+      return;
+    }
+
+    if (!realTimeData) {
+      toast.warn('Drone is not connected!');
+      return;
+    }
+
+    toast.info('Sending flight request!');
+    CommandService.startFlight();
+  };
+
+  const stopFlightCommand = () => {
+    toast.info('Sending stop request!');
+    CommandService.stopFlight();
+  };
+
   return (
     <PageWrapper fullscreen>
-      <Chat onReceivingRealTimeData={setRealTimeData} />
+      <Chat onReceivingRealTimeData={updateRealTimeData} onConnected={() => {}} onReceivingLiveRawData={() => {}} />
       <Map
         realTimeData={realTimeData}
         realTimeRoutes={realTimeRoutes}
@@ -110,8 +137,8 @@ export default function Home() {
         realTimeData={realTimeData}
         waypoints={waypoints}
         onWaypointRemoved={waypointRemovedHandler}
-        isFlying={isFlying}
-        onFlying={setIsFlying}
+        onStartFlight={startFlightCommand}
+        onStopFlight={stopFlightCommand}
       />
     </PageWrapper>
   );

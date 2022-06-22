@@ -9,7 +9,7 @@ import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 import DataBar from './DataBar/DataBar';
 import WaypointsBar from './WaypointsBar/WaypointsBar';
 
-export default function MapOverlay({ realTimeData, waypoints, onWaypointRemoved, isFlying, onFlying }) {
+export default function MapOverlay({ realTimeData, waypoints, onWaypointRemoved, onStartFlight, onStopFlight }) {
   return (
     <>
       <div className="map-overlay-left">
@@ -23,8 +23,9 @@ export default function MapOverlay({ realTimeData, waypoints, onWaypointRemoved,
         <WaypointsBar
           waypoints={waypoints}
           onWaypointRemoved={onWaypointRemoved}
-          isFlying={isFlying}
-          onFlying={onFlying}
+          isFlying={realTimeData?.if}
+          onStartFlight={onStartFlight}
+          onStopFlight={onStopFlight}
         />
       </div>
     </>

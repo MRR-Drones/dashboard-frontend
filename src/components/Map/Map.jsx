@@ -28,6 +28,9 @@ export default function Map({ waypoints, realTimeData, realTimeRoutes, onWaypoin
   const counter = useRef(0);
 
   const clickHandler = (data) => {
+    // We won't create new waypoint if drone is flying
+    if (realTimeData && realTimeData.if) return;
+
     const coord = data.lngLat;
     console.log(coord);
 
@@ -76,27 +79,39 @@ export default function Map({ waypoints, realTimeData, realTimeRoutes, onWaypoin
   }, [waypoints]);
 
   useEffect(() => {
-    if (realTimeData) {
-      const { lo: longitude, la: latitude } = realTimeData;
-      mapRef.current.panTo([longitude, latitude]);
+    if (!realTimeData) return;
 
-      if (counter.current === 0) {
-        mapRef.current.flyTo({
-          center: [longitude, latitude],
-          speed: 0.9,
-          zoom: 19,
-        });
+    const { lo: longitude, la: latitude, if: isFlying } = realTimeData;
+    // mapRef.current.panTo([longitude, latitude]);
 
-        counter.current += 1;
-      }
+    if (counter.current === 0 && isFlying) {
+      if (!longitude || !latitude) return;
+      mapRef.current.flyTo({
+        center: [longitude, latitude],
+        speed: 0.9,
+        zoom: 19,
+      });
 
-      if (!longitude || !latitude) {
-        return;
-      }
+      toast.dismiss();
+      toast.success('Flight has started!');
 
-      const point = turf.point([longitude, latitude]);
-      setLivePositionTurf(point);
+      counter.current += 1;
     }
+
+    if (!isFlying && counter.current !== 0) {
+      toast.dismiss();
+      toast.info('Flight has finished!');
+      setLivePositionTurf(null);
+      setBearingTurf(null);
+      counter.current = 0;
+    }
+
+    if (!isFlying) {
+      return;
+    }
+
+    const point = turf.point([longitude, latitude]);
+    setLivePositionTurf(point);
   }, [realTimeData]);
 
   useEffect(() => {
@@ -104,8 +119,6 @@ export default function Map({ waypoints, realTimeData, realTimeRoutes, onWaypoin
     if (numOfRoutes > 1) {
       const start = turf.point(realTimeRoutes[numOfRoutes - 2]);
       const end = turf.point(realTimeRoutes[numOfRoutes - 1]);
-      console.log(start);
-      console.log(end);
       const bearing = turf.bearing(start, end);
       setBearingTurf(bearing);
     }
@@ -201,6 +214,7 @@ export default function Map({ waypoints, realTimeData, realTimeRoutes, onWaypoin
               'icon-rotation-alignment': 'map',
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
+              'icon-size': 1.2,
             }}
           />
         </Source>

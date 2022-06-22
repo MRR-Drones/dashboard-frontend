@@ -9,7 +9,7 @@ import './WaypointsBar.scss';
 import Button from '../../../../components/Button/Button';
 import Waypoints from './Waypoints/Waypoints';
 
-export default function WaypointsBar({ waypoints, onWaypointRemoved, isFlying, onFlying }) {
+export default function WaypointsBar({ waypoints, onWaypointRemoved, isFlying, onStartFlight, onStopFlight }) {
   return (
     <div className="waypoints-bar">
       <div className="heading">
@@ -28,11 +28,11 @@ export default function WaypointsBar({ waypoints, onWaypointRemoved, isFlying, o
       </div> */}
       <Waypoints waypoints={waypoints} onWaypointRemoved={onWaypointRemoved} />
       {isFlying ? (
-        <Button red fullwidth onclick={() => onFlying(false)}>
+        <Button red fullwidth onclick={onStopFlight}>
           Stop flight
         </Button>
       ) : (
-        <Button blue fullwidth onclick={() => onFlying(true)}>
+        <Button blue fullwidth onclick={onStartFlight}>
           Start flight
         </Button>
       )}
